@@ -1,0 +1,57 @@
+Library
+-SPL
+1. Gauss
+2. Gauss-Jordan
+3. Balikan
+4. Cramers
+-Determinan
+1. OBE
+2. Ekspansi kofaktor
+-Invers
+1. Identitas
+2. Adjoint
+(aplikasi lib atas)
+- Interpolasi Polinom
+- Bicubic Interpolation
+-- Bonus scaling 2x image
+- Regresi Linear Berganda
+
+Fitur
+1. Input text atau cli (command line interface)
+1.1 Contoh matriks, det,dll di spek (ada 4 jenis)
+2. Output (ada 4 juga) bisa ke layar dan menjadi sebuah file
+3. Menu dan sub-menu (opsional gui) refer ke spek
+
+Laporan
+1. Cover: Cover laporan ada foto anggota kelompok 
+2. Bab 1: Deskripsi masalah (dapat meng-copy paste file tugas ini).
+3. Bab 2: Teori singkat mengenai metode eliminasi Gauss, metode eliminasi
+Gauss-Jordan, determinan, matriks balikan, matriks kofaktor, matriks adjoin,
+kaidah Cramer, interpolasi polinom, interpolasi bicubic, regresi linier
+berganda.
+4. Bab 3: Implementasi pustaka dan program dalam Java, meliputi struktur class
+yang didefinisikan (atribut dan method), garis besar program, dll.
+5. Bab 4: Eksperimen. Bab ini berisi hasil eksekusi program terhadap
+contoh-contoh kasus yang diberikan berikut analisis hasil eksekusi tersebut
+6. Bab 5: Kesimpulan, saran, dan refleksi (hasil yang dicapai, saran
+pengembangan, dan refleksi anda terhadap tugas ini).
+7. Tuliskan juga referensi (buku, web), yang dipakai/diacu di dalam Daftar
+Referensi
+
+Deliverable
+1. repository github Algeo01-xxxxx. Lima digit terakhir adalah NIM anggota terkecil.
+Folder bin berisi java bytecode (*.class)
+Folder src berisi source code dari program java
+Folder test berisi data uji.
+Folder doc berisi laporan
+2. Algeo01-xxxxx-RevisiX dengan X adalah nomor revisi.
+3. Deadline pengumpulan adalah Senin, 3 September 2022 pukul 23.59 WIB.
+
+Nilai
+80 % Program
+20 % Laporan
+Test memakai studi kasus (14 soal)
+
+
+
+
