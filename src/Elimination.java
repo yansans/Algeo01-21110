@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Elimination {
     public static void gauss(double[][] matrix, int m, int n){
         int i, j, k;
