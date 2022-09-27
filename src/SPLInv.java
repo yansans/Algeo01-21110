@@ -1,5 +1,6 @@
 package Tubes;
 
+
 public class SPLInv {
     public static double[][] InverseOBE(double[][] matrix){
         int dimensi = matrix.length;
@@ -20,16 +21,20 @@ public class SPLInv {
         }
 
         for(int i=0;i<dimensi;i++){ // membuat nilai diagonal utama menjadi 1
-            double kali = 1.00f/matrixCopy[i][i];
-            matrixCopy[i][i] *= kali;
-            matrixInverse[i][i] *= kali;
+            double kali = (1.00f)/matrixCopy[i][i];
+            for(int j=0;j<dimensi;j++){
+                matrixCopy[i][j] *= kali;
+                matrixInverse[i][j] *= kali;
+            }
         }
 
         for(int i=dimensi-1;i>=0;i--){ // kolom yang akan di nol kan
             for(int j=dimensi-1;j>i;j--){ // meng-nol kan kolom diatasnya
-                double kali = matrixCopy[i][j]/matrixCopy[i][i];
-                matrixCopy[i][j] -= kali* matrixCopy[i][i];
-                matrixInverse[i][j] -= kali* matrixInverse[i][i];
+                double kali = matrixCopy[i][j]/matrixCopy[j][j];
+                for(int k=0;k<dimensi;k++){
+                    matrixCopy[i][k] -= kali* matrixCopy[j][k];
+                    matrixInverse[i][k] -= kali* matrixInverse[j][k];
+                }
             }
         }
         
