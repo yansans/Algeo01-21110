@@ -6,8 +6,26 @@ public class DetOBE{
         double[][] matrixOBE = DebugMatrix.CopyMatrix(Matrix);
         
         for(int i=0;i<dimensi;i++){ // kolom yang akan di nol kan
+            if(matrixOBE[i][i] == 0 && i!=dimensi-1){ // apabila diagonal utama nol, tukar barus
+                boolean found = false;
+                for(int j=i+1;j<dimensi;j++){
+                    if(matrixOBE[j][i] != 0){
+                        found = true;
+                        for(int k=0;k<dimensi;k++){ // menukar baris
+                            double temp = matrixOBE[j][k];
+                            matrixOBE[j][k] = matrixOBE[i][k];                            
+                            matrixOBE[i][k] = temp;                            
+                        }
+                        break;
+                    }
+                }
+                if(!found){ // jika tidak bisa menukar baris
+                    return 0;
+                }
+            }
             for(int j=i+1;j<dimensi;j++){ // meng-nol kan kolom dibawahnya
                 double kali = matrixOBE[j][i]/matrixOBE[i][i];
+
                 for(int k=0;k<dimensi;k++){
                     matrixOBE[j][k] -= kali* matrixOBE[i][k];
                 }
