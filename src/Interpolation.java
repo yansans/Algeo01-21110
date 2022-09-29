@@ -20,15 +20,32 @@ public class Interpolation {
         System.out.printf("%.4f", solution[n-1]);
         System.out.print("x^" + (n-1));
         for(i = n-2; i >= 2; i--){
-            System.out.print(" + ");
-            System.out.printf("%.4f", solution[i]);
-            System.out.print("x^" + i);
+            if(solution[i] >= 0){
+                System.out.print(" + ");
+                System.out.printf("%.4f", solution[i]);
+                System.out.print("x^" + i);
+            } else{
+                System.out.print(" - ");
+                System.out.printf("%.4f", solution[i]);
+                System.out.print("x^" + i);
+            }
         }
-        System.out.print(" + ");
-        System.out.printf("%.4f", solution[1]);
-        System.out.print("x");
-        System.out.print(" + ");
-        System.out.printf("%.4f,\n", solution[0]);
+        if(solution[1] >= 0){
+            System.out.print(" + ");
+            System.out.printf("%.4f", solution[1]);
+            System.out.print("x");
+        } else{
+            System.out.print(" - ");
+            System.out.printf("%.4f", solution[1]);
+            System.out.print("x");
+        }
+        if(solution[0] >= 0){
+            System.out.print(" + ");
+            System.out.printf("%.4f,\n", solution[0]);
+        } else{
+            System.out.print(" - ");
+            System.out.printf("%.4f,\n", solution[0]);
+        }
         System.out.print("f(" + x + ") = ");
         System.out.printf("%.4f\n", y);
     }
