@@ -4,6 +4,7 @@ public class DetOBE{
     public static double DeterminanOBE(double[][] Matrix){
         int dimensi = Matrix.length;
         double[][] matrixOBE = DebugMatrix.CopyMatrix(Matrix);
+        int tukarcounter = 0;
         
         for(int i=0;i<dimensi;i++){ // kolom yang akan di nol kan
             if(matrixOBE[i][i] == 0 && i!=dimensi-1){ // apabila diagonal utama nol, tukar barus
@@ -21,6 +22,8 @@ public class DetOBE{
                 }
                 if(!found){ // jika tidak bisa menukar baris
                     return 0;
+                }else{
+                    tukarcounter++;
                 }
             }
             for(int j=i+1;j<dimensi;j++){ // meng-nol kan kolom dibawahnya
@@ -31,7 +34,7 @@ public class DetOBE{
                 }
             }
         }
-        double determinan = 1;
+        double determinan = Math.pow(-1, tukarcounter);
         for(int i=0;i<dimensi;i++){
             determinan *= matrixOBE[i][i];
         }
