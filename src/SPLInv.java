@@ -40,7 +40,14 @@ public class SPLInv {
         
         return matrixInverse;
     }
-
+    
+    public static double[] SolusiSPLInverse(double[][] matrix, double[] nilai){
+        double[][] matrixinverse = DebugMatrix.CopyMatrix(matrix);
+        matrixinverse = InverseOBE(matrixinverse);
+        double[] solusi = MatrixMultiplication.SolusiSPL(matrixinverse, nilai);
+        return solusi;
+    }
+    
     public static void main(String[] args){
         DebugMatrix.DisplayMatrix(InverseOBE(DebugMatrix.Matrix1));
         DebugMatrix.DisplayMatrix(InverseOBE(DebugMatrix.Matrix2));
