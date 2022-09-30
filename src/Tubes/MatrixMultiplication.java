@@ -29,8 +29,8 @@ public class MatrixMultiplication {
     }
     
     public static double[] SolusiSPL(double[][] matrix, double[] nilai){
-        int dimensi = matrix.length;
-        double[] solusi = new double[dimensi];
+        int dimensi = matrix.length, col = matrix[0].length;
+        double[] solusi = new double[col];
         for(int i=0;i<dimensi;i++){
             for(int j=0;j<dimensi;j++){
                 solusi[i] += matrix[i][j] * nilai[j];
