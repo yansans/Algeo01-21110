@@ -1,4 +1,4 @@
-package iomat;
+package Tubes;
 import java.util.Scanner;
 public class IOMat {
 

@@ -1,6 +1,8 @@
+package Tubes;
+
 import static Tubes.Cofactor.*;
 import static Tubes.MatrixMultiplication.*;
-import static Tubes.Identity.*;
+import static Tubes.IdentityMatrix.*;
 
 public class DoubleLineReg {
 

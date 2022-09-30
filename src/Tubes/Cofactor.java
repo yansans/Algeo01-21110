@@ -1,4 +1,6 @@
-package cofactor;
+
+package Tubes;
+
 public class Cofactor {
     
     public static double[][] transpose(double[][] m) {
