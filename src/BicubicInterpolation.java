@@ -182,7 +182,7 @@ public class BicubicInterpolation {
                 MatrixDerivative[x+y*2+12][x+y*4+5] = 0.25;
             }
         }
-        MatrixModel = Cofactor.inverse(MatrixModel); // X^-1
+        IdentityMatrix.inverse(MatrixModel, 16); // X^-1
         double[][] RecycleMatrix = MatrixMultiplication.PerkalianMatrix(MatrixModel, MatrixDerivative); // X^-1 * D
         double[] solusi = MatrixMultiplication.SolusiSPL(RecycleMatrix, nilai);
 
