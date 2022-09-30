@@ -1,8 +1,9 @@
 package Tubes;
 
 public class SPL_Elimination {
-    public static double[] gauss_jordan(double[][] A, double[][] b, int m, int n){
+    public static double[] gauss_jordan(double[][] A, double[] b){
         int i, j;
+        int m = A.length, n = A[0].length;
         int zero_row = 0;
         double[] solution = new double[n];
         double[][] augmented = new double[m][n+1];
@@ -16,7 +17,7 @@ public class SPL_Elimination {
         for(i = 0; i < m; i++){
             for(j = 0; j < n+1; j++){
                 if(j == n){
-                    augmented[i][j] = b[i][0];
+                    augmented[i][j] = b[i];
                 } else{
                     augmented[i][j] = A[i][j];
                 }
@@ -33,11 +34,9 @@ public class SPL_Elimination {
                 break;
             }
         }
-        if(zero_row == n && augmented[m-1][n] == 0){
-            System.out.println("Solusi SPL berbentuk parametrik");
+        if(zero_row == n && augmented[m-1][n] == 0){ // Solusi parametrik
             return solution;
-        } else if(zero_row == n){
-            System.out.println("SPL tidak memiliki solusi");
+        } else if(zero_row == n){                   // Tidak memiliki solusi
             return solution;
         } else{
             for(i = 0; i < m; i++){
@@ -51,8 +50,9 @@ public class SPL_Elimination {
 
 
 
-    public static double[] gauss(double[][] A, double[][] b, int m, int n){
+    public static double[] gauss(double[][] A, double[] b){
         int i, j;
+        int m = A.length, n = A[0].length;
         int zero_row = 0;
         double value = 0d;
         double[] solution = new double[n];
@@ -67,7 +67,7 @@ public class SPL_Elimination {
         for(i = 0; i < m; i++){
             for(j = 0; j < n+1; j++){
                 if(j == n){
-                    augmented[i][j] = b[i][0];
+                    augmented[i][j] = b[i];
                 } else{
                     augmented[i][j] = A[i][j];
                 }
@@ -84,11 +84,9 @@ public class SPL_Elimination {
                 break;
             }
         }
-        if(zero_row == n && augmented[m-1][n] == 0){
-            System.out.println("Solusi SPL berbentuk parametrik");
+        if(zero_row == n && augmented[m-1][n] == 0){    // Solusi parametrik
             return solution;
-        } else if(zero_row == n){
-            System.out.println("SPL tidak memiliki solusi");
+        } else if(zero_row == n){                       // Tidak memiliki solusi
             return solution;
         } else{
             solution[n-1] = augmented[m-1][n];
