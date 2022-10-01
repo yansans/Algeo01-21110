@@ -1,7 +1,6 @@
 package src.LinearAlgebraMatrixOperations;
 
 public class OperasiPrimitif {
-
     public static void copyMatrix(double[][] matrix, double[][] copy){
         int i, j;
 
@@ -48,6 +47,40 @@ public class OperasiPrimitif {
             }
         }
         return solusi;
+    }
+
+    public static double[][] transpose(double[][] m) {
+        // transpose matrix
+        int row = m.length;
+        int col = m[0].length;
+        double[][] trans = new double[col][row];
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                trans[j][i] = m[i][j];
+            }
+        }
+        return trans;
+    }
+
+    public static void getCofactor(double[][] m, double[][] temp, int a, int b, int n) {
+        // Mendapatkan kofaktor dari m dan menyimpannya di temp
+
+        int row , col;
+        row = col = 0;
+
+        for (int i = 0 ; i < n ; i++){
+            for (int j = 0 ; j < n ; j++){
+                if (i != a && j != b){
+                    temp[row][col++] = m[i][j];
+                    if (col == n - 1){
+                        col = 0;
+                        row++;
+                    }
+                }
+
+            }
+        }
     }
 
 }
