@@ -16,7 +16,7 @@ public class OperasiInverse {
             for (int j = 0; j < n; j++){
                 OperasiPrimitif.getCofactor(m, temp, i, j, n);
                 sign = ((i + j) % 2 == 0) ? 1 : -1;
-                adj[j][i] = (sign) * (OperasiDeterminan.determinanCofactor(temp, n - 1));
+                adj[j][i] = (sign) * (OperasiDeterminan.DeterminanCofactor(temp, n - 1));
             }
         }
         return adj;
@@ -25,7 +25,7 @@ public class OperasiInverse {
         // Mendapatkan matriks invers dari m dari adjoint dan determinan
         int n = m.length;
         double[][] inv = new double[n][n];
-        double det = OperasiDeterminan.determinanCofactor(m, n);
+        double det = OperasiDeterminan.DeterminanCofactor(m, n);
         if (det == 0){
             System.out.println("Determinan 0, tidak memiliki invers");
             return inv;
