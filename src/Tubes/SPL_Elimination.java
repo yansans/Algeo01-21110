@@ -25,7 +25,7 @@ public class SPL_Elimination {
         }
 
         // Gaussian Elimination
-        Elimination.gauss_jordan(augmented, m, n+1);
+        Elimination.gauss_jordan(augmented);
 
         // Check Solution
         for(j = 0; j < n+1; j++){
@@ -75,7 +75,7 @@ public class SPL_Elimination {
         }
 
         // Gaussian Elimination
-        Elimination.gauss(augmented, m, n+1);
+        Elimination.gauss(augmented);
 
         // Check Solution
         for(j = 0; j < n+1; j++){
