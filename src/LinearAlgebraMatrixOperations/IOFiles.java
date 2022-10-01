@@ -1,76 +1,85 @@
 package LinearAlgebraMatrixOperations;
 
-import java.io.File;  // Import the File class
-import java.io.IOException;  // Import the IOException class to handle errors
-import java.io.FileWriter; // Import the FileWriter class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.NoSuchElementException;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import static Tubes.IOMat.printMatrix;
-import java.io.LineNumberReader;
 
 public class IOFiles {
 
     public static double[][] readMatrix(String file){
         int row, col;
-        double[][] mat;
+        double[][] mat = new double[0][0];
         row = col = 0;
-        row = col = 3;
+
         try {
             File matrix = new File(file);
             Scanner scan_row = new Scanner(matrix);
-            System.out.println("Try");
-//            while (scan_row.hasNextLine()) {
-//                row++;
-//                System.out.println("Line");
-////                Scanner scan_col = new Scanner(scan_row.nextLine());
-////                while (scan_col.hasNextDouble()) {
-////                    col++;
-////                    System.out.println("Row");
-////                    scan_col.nextDouble();
-//
-//                scan_row.nextLine();
-//            }
-            System.out.println("scan 1");
-            System.out.println(row);
-            System.out.println(col);
+            while (scan_row.hasNextLine()) {
+                row++;
+                Scanner scan_col = new Scanner(scan_row.nextLine());
+                int n = 0;
+                while(scan_col.hasNextDouble()){
+                    n++;
+                    scan_col.nextDouble();
+                }
+                col = n;
+            }
+            scan_row.close();
+            Scanner scan = new Scanner(matrix);
+
+
             mat = new double[row][col];
 
             for (int i = 0; i < row ; i++){
                 for (int j = 0 ; j < col ; j++){
-                    if (scan_row.hasNextLine()){
-                        mat[i][j] = scan_row.nextDouble();
-                        }
+                    if (scan.hasNextLine()){
+                        mat[i][j] = scan.nextDouble();
                     }
                 }
-
-            System.out.println("scan 2");
-
-//            double [][] x = new double[row -1][col];
-//            double [][] y = new double[row -1][1];
-//
-//            for (int i = 0; i < row ; i++){
-//                for (int j = 0 ; j < col ; j++){
-//                    if (scan_row.hasNextLine()){
-//                        if (j == col -1) y[i][0] = scan_row.nextInt();
-//                        else{
-//                            x[i][j] = scan_row.nextInt();
-//                        }
-//                    }
-//                }
-//            }
-
+            }
             scan_row.close();
-            return mat;
         } catch (FileNotFoundException e) {
+            System.out.println("File tidak ditemukan.");
+            e.printStackTrace();
+        }
+        return mat;
+    }
+
+    public static boolean writeMatrix(String file, double[][] matriks){
+        try {
+            File myObj = new File(file);
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return mat = new double[0][0];
+        try {
+            FileWriter Writer = new FileWriter(file);
+            for (int i = 0 ; i < matriks.length ; i++){
+                for (int j = 0; j < matriks[0].length; j++){
+                    Writer.write(matriks[i][j] + ((j != matriks[0].length -1)? " " : "\n"));
+                }
+            }
+            Writer.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return true;
     }
-    public static void main(String[]args){
-        double[][] matrix = new double[3][3];
-        matrix = readMatrix("filename.txt");
+
+        public static void main(String[]args){
+        double[][] matrix;
+        matrix = readMatrix("fileread.txt");
         printMatrix(matrix);
+        writeMatrix("filewrite.txt", matrix);
     }
 }
