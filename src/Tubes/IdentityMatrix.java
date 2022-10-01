@@ -1,8 +1,9 @@
 package Tubes;
 
 public class IdentityMatrix {
-    public static void inverse(double[][] matrix, int m){
+    public static void inverse(double[][] matrix){
         int i, j, k;
+        int m = matrix.length;
         double zero = 0d, one = 1d;
         double[][] copy = new double[m][m];
         double[][] identity = new double[m][m];
