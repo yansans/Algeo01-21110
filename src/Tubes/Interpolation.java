@@ -2,7 +2,7 @@ package Tubes;
 import java.lang.Math;
 
 public class Interpolation {
-    public static void polinom(double[][] A, double[][] b, double x){
+    public static void polinom(double[][] A, double[] b, double x){
         int i, j;
         int m = A.length, n = A[0].length;
         double y = 0d;
