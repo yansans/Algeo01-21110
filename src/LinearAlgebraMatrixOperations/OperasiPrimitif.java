@@ -90,8 +90,8 @@ public class OperasiPrimitif {
         int zero_row1 = 0, zero_row2 = 0;
         // Forward Elimination
         for(i = 0; i < m-1; i++){
-            leadingOne(matrix, i);
             pivot(matrix);
+            leadingOne(matrix, i);
             for(j = 0; j < n; j++){
                 zero_row1 = j;
                 if(matrix[i][j] != 0){
@@ -213,8 +213,8 @@ public class OperasiPrimitif {
         int zero_row = 0, zero_row1 = 0, zero_row2 = 0;
         // Forward Elimination
         for(i = 0; i < m-1; i++){
-            leadingOne_inv(matrix, identity, i);
             pivot_inv(matrix, identity);
+            leadingOne_inv(matrix, identity, i);
             for(j = 0; j < m; j++){
                 zero_row1 = j;
                 if(matrix[i][j] != 0){
