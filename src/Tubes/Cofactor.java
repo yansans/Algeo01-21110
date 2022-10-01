@@ -7,7 +7,7 @@ public class Cofactor {
         // transpose matrix
         int row = m.length;
         int col = m[0].length;
-        double[][] trans = new double[row][col];
+        double[][] trans = new double[col][row];
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -19,35 +19,22 @@ public class Cofactor {
     }
 
 
-    public static void getCofactor(double[][] m, double[][] temp, int p, int q) {
+    public static void getCofactor(double[][] m, double[][] temp, int a, int b, int n) {
         // Mendapatkan kofaktor dari m dan menyimpannya di temp
-        int n = m.length;
         
-        // for (int i = 0; i < n; i++) {
-        //     int a = 0;
-        //     for (int j = 0; j < n; j++) {
-        //         int b = 0;
-        //         for (int k = 0; k < n; k ++){
-        //             if (k == i) {
-        //                 continue;
-        //             }
-        //             temp[a][b] = m[j][k];
-        //             b++;
-        //         }
-        //         a++;
-        //     }
-        // }
-
-        int i = 0, j = 0;
-        for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
-                if (row != p && col != q) {
-                    temp[i][j++] = m[row][col];
-                    if (j == n - 1) {
-                        j = 0;
-                        i++;
+        int row , col;
+        row = col = 0;
+        
+        for (int i = 0 ; i < n ; i++){
+            for (int j = 0 ; j < n ; j++){
+                if (i != a && j != b){
+                    temp[row][col++] = m[i][j];
+                    if (col == n - 1){
+                        col = 0;
+                        row++;
                     }
                 }
+
             }
         }
     }
@@ -62,7 +49,7 @@ public class Cofactor {
         double[][] temp = new double[n][n];
         int sign = 1;
         for (int i = 0; i < n; i++) {
-            getCofactor(m, temp, 0, i);
+            getCofactor(m, temp, 0, i, n);
             det += sign * m[0][i] * determinant(temp, n - 1);
             sign = -sign;
         }
@@ -73,15 +60,15 @@ public class Cofactor {
         // Mendapatkan matriks adjoin dari m secara rekursif
         int n = m.length;
         double[][] adj = new double[n][n];
-        if (n == 1){
-            adj[0][0] = 1;
-            return adj;
-        }
+        // if (n == 1){
+        //     adj[0][0] = 1;
+        //     return adj;
+        // }
         int sign = 1;
         double[][] temp = new double[n][n];
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++){
-                getCofactor(m, temp, i, j);
+                getCofactor(m, temp, i, j, n);
                 sign = ((i + j) % 2 == 0) ? 1 : -1;
                 adj[j][i] = (sign) * (determinant(temp, n - 1));
             }
