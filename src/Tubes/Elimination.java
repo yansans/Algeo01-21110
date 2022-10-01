@@ -1,13 +1,15 @@
 package Tubes;
 
 public class Elimination {
-    public static void gauss(double[][] matrix, int m, int n){
+    public static void gauss(double[][] matrix){
         int i, j, k;
+        int m = matrix.length, n = matrix[0].length;
         double ratio = 0d;
         int zero_row1 = 0, zero_row2 = 0;
         // Forward Elimination
         for(i = 0; i < m-1; i++){
-            pivot(matrix, m, n);
+            leadingOne(matrix, i);
+            pivot(matrix);
             for(j = 0; j < n; j++){
                 zero_row1 = j;
                 if(matrix[i][j] != 0){
@@ -32,35 +34,17 @@ public class Elimination {
                 }
             }
         }
-
-        // Leading one
-        // Membagi setiap baris dengan elemen pertama tidak nol pada baris tersebut agar terbentuk satu utama
-        for(i = 0; i < m; i++){
-            for(j = 0; j < n; j++){
-                zero_row1 = j;
-                if(matrix[i][j] != 0){
-                    break;
-                }
-                if(j == n-1 && matrix[i][n-1] == 0){ 
-                zero_row1++;
-                } 
-            }
-            if(zero_row1 != n){
-                ratio = matrix[i][zero_row1];
-                for(j = 0; j < n; j++){
-                    matrix[i][j] /= ratio;
-                }
-            }
-        }
+        leadingOne(matrix, i);
     }
 
 
 
 
-    public static void gauss_jordan(double[][] matrix, int m, int n){
-        gauss(matrix, m, n);
+    public static void gauss_jordan(double[][] matrix){
+        gauss(matrix);
 
         int i, j, k;
+        int m = matrix.length, n = matrix[0].length;
         int lead_one = 0;
         double ratio = 0d;
         // Backward Elimination
@@ -91,8 +75,9 @@ public class Elimination {
 
 
 
-    public static void pivot(double[][] matrix, int m, int n){
+    public static void pivot(double[][] matrix){
         int i, j, k;
+        int m = matrix.length, n = matrix[0].length;
         // Operasi Pertukaran Baris
         int zero_row1 = 0, zero_row2 = 0;
         double[] temp_array = new double[n];
@@ -123,6 +108,30 @@ public class Elimination {
                     }
                 }
             }
+        }
+    }
+
+
+
+
+
+    public static void leadingOne(double[][] matrix, int i){
+        int j, zero_row = 0;
+        int n = matrix[0].length;
+        double ratio;
+
+        for(j = 0; j < n; j++){
+                zero_row = j;
+                if(matrix[i][j] != 0){
+                    break;
+                }
+                if(j == n-1 && matrix[i][n-1] == 0){ 
+                    zero_row++;
+                }
+            }
+            ratio = matrix[i][zero_row];
+        for(j = 0; j < n; j++){
+            matrix[i][j] /= ratio;
         }
     }
 }
