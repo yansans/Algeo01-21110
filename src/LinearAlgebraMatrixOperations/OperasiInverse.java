@@ -39,7 +39,7 @@ public class OperasiInverse {
         return inv;
     }
     
-    public static void identity(double[][] matrix){
+    public static void inverseIdentity(double[][] matrix){
         int i, j, k;
         int m = matrix.length;
         double[][] copy = new double[m][m];
