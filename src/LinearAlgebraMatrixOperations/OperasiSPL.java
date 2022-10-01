@@ -101,4 +101,24 @@ public class OperasiSPL {
             return solution;
         }
     }
+    
+    public static double[] SolusiCrammer(double[][] matrix, double[] nilai){
+        int n = nilai.length;
+        double[] solusi = new double[n];
+        double determinanUtama = OperasiDeterminan.DeterminanOBE(matrix);
+        if(determinanUtama == 0){
+            return solusi; // jika determinan matrix utama 0 maka tidak ada solusi
+        }
+
+        double[][] matrixtmp = new double[n][n];
+        for(int i=0;i<n;i++){ // iterate seluruh kolom yang akan diganti
+            OperasiPrimitif.copyMatrix(matrix, matrixtmp); // copy matrix
+            for(int j=0;j<n;j++){
+                matrixtmp[j][i] = nilai[j]; // ganti nilai kolom matrix
+            }
+            double determinanKecil = OperasiDeterminan.DeterminanOBE(matrixtmp);
+            solusi[i] = determinanKecil/determinanUtama;
+        }
+        return solusi;
+    }
 }
