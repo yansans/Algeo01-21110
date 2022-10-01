@@ -8,41 +8,27 @@ public class IdentityMatrix {
         double[][] identity = new double[m][m];
         boolean inverse = true;
 
-        // Copy Matrix
-        Misc.copyMatrix(matrix, copy);
-
-        // Create Identity Matrix
-        for(i = 0; i < m; i++){
-            for(j = 0; j < m; j++){
-                if(i == j){
-                    identity[i][j] = one;
-                } else{
-                    identity[i][j] = zero;
-                }
-            }
-        }
-
-        // Elimination
-        gauss_jordan_inv(copy, identity, m);
-
         // Check if matrix has inverse
-        for(i = 0; i < m; i++){
-            for(j = 0; j < m; j++){
-                if(copy[i][j] == one){
-                    break;
-                }
-                if(j == m-1 && copy[i][j] == 0){
-                    inverse = false;
-                    break;
-                }
-            }
-            if(inverse == false){
-                break;
-            }
-        }
-        if(inverse == false){
+        if(DetOBE.DeterminanOBE(matrix) == 0){
             System.out.println("Matriks tidak memiliki balikan");
         } else{
+            // Copy Matrix
+            Misc.copyMatrix(matrix, copy);
+
+            // Create Identity Matrix
+            for(i = 0; i < m; i++){
+                for(j = 0; j < m; j++){
+                    if(i == j){
+                        identity[i][j] = one;
+                    } else{
+                        identity[i][j] = zero;
+                    }
+                }
+            }
+
+            // Elimination
+            gauss_jordan_inv(copy, identity);
+            
             // Store inverse value to matrix
             for(i = 0; i < m; i++){
                 for(j = 0; j < m; j++){
@@ -51,19 +37,22 @@ public class IdentityMatrix {
             }
         }
     }
+    
 
 
 
 
 
 
-    public static void gauss_inv(double[][] matrix, double[][] identity, int m){
+    public static void gauss_inv(double[][] matrix, double[][] identity){
         int i, j, k;
+        int m = matrix.length;
         double ratio = 0d;
-        int zero_row1 = 0, zero_row2 = 0;
+        int zero_row = 0, zero_row1 = 0, zero_row2 = 0;
         // Forward Elimination
         for(i = 0; i < m-1; i++){
-            pivot_inv(matrix, identity, m);
+            leadingOne_inv(matrix, identity, i);
+            pivot_inv(matrix, identity);
             for(j = 0; j < m; j++){
                 zero_row1 = j;
                 if(matrix[i][j] != 0){
@@ -89,38 +78,18 @@ public class IdentityMatrix {
                 }
             }
         }
-
-        // Leading one
-        // Membagi setiap baris dengan elemen pertama tidak nol pada baris tersebut agar terbentuk satu utama
-        for(i = 0; i < m; i++){
-            for(j = 0; j < m; j++){
-                zero_row1 = j;
-                if(matrix[i][j] != 0){
-                    break;
-                }
-                if(j == m-1 && matrix[i][m-1] == 0){ 
-                zero_row1++;
-                } 
-            }
-            if(zero_row1 != m){
-                ratio = matrix[i][zero_row1];
-                for(j = 0; j < m; j++){
-                    matrix[i][j] /= ratio;
-                    identity[i][j] /= ratio;
-                }
-            }
-        }
+        leadingOne_inv(matrix, identity, i);
     }
 
 
 
 
-    public static void gauss_jordan_inv(double[][] matrix, double[][] identity,  int m){
-        gauss_inv(matrix, identity, m);
-
+    public static void gauss_jordan_inv(double[][] matrix, double[][] identity){
         int i, j, k;
-        int lead_one = 0;
+        int lead_one = 0, m = matrix.length;
         double ratio = 0d;
+
+        gauss_inv(matrix, identity);
         // Backward Elimination
         for(i = 0; i < m; i++){
             for(j = 0; j < m; j++){
@@ -150,10 +119,10 @@ public class IdentityMatrix {
 
 
 
-    public static void pivot_inv(double[][] matrix, double[][] identity, int m){
+    public static void pivot_inv(double[][] matrix, double[][] identity){
         int i, j, k;
         // Operasi Pertukaran Baris
-        int zero_row1 = 0, zero_row2 = 0;
+        int zero_row1 = 0, zero_row2 = 0, m = matrix.length;
         double[] temp_array1 = new double[m];
         double[] temp_array2 = new double[m];
 
@@ -187,6 +156,31 @@ public class IdentityMatrix {
                     }
                 }
             }
+        }
+    }
+
+
+
+
+
+    public static void leadingOne_inv(double[][] matrix, double[][] identity, int i){
+        int j, zero_row = 0;
+        int m = matrix.length;
+        double ratio;
+
+        for(j = 0; j < m; j++){
+                zero_row = j;
+                if(matrix[i][j] != 0){
+                    break;
+                }
+                if(j == m-1 && matrix[i][m-1] == 0){ 
+                    zero_row++;
+                }
+            }
+            ratio = matrix[i][zero_row];
+        for(j = 0; j < m; j++){
+            matrix[i][j] /= ratio;
+            identity[i][j] /= ratio;
         }
     }
 }
