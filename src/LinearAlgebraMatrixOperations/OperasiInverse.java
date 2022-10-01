@@ -38,4 +38,40 @@ public class OperasiInverse {
         }
         return inv;
     }
+    
+    public static void identity(double[][] matrix){
+        int i, j, k;
+        int m = matrix.length;
+        double[][] copy = new double[m][m];
+        double[][] identity = new double[m][m];
+
+        // Check if matrix has inverse
+        if(OperasiDeterminan.DeterminanOBE(matrix) == 0){
+            System.out.println("Matriks tidak memiliki balikan");
+        } else{
+            // Copy Matrix
+            OperasiPrimitif.copyMatrix(matrix, copy);
+
+            // Create Identity Matrix
+            for(i = 0; i < m; i++){
+                for(j = 0; j < m; j++){
+                    if(i == j){
+                        identity[i][j] = 1d;
+                    } else{
+                        identity[i][j] = 0d;
+                    }
+                }
+            }
+
+            // Elimination
+            OperasiPrimitif.gauss_jordan_inv(copy, identity);
+            
+            // Store inverse value to matrix
+            for(i = 0; i < m; i++){
+                for(j = 0; j < m; j++){
+                    matrix[i][j] = identity[i][j];
+                }
+            }
+        }
+    }
 }
