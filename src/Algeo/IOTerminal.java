@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 import java.util.*;
 
 
@@ -55,21 +55,141 @@ public class IOTerminal {
         System.out.println();
     }
 
-    public static void PrintSolusiSPL(double[] solusi){
+    public static double[][] persamaanSPLAugmented(double[][] MatrixAugmented){
+        int n = MatrixAugmented.length;
+        int m = MatrixAugmented[0].length;
+        double[][] Matrix = new double[n][m-1];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                Matrix[i][j] = MatrixAugmented[i][j];
+            }
+        }
+        return Matrix;
+    }
 
+    public static double[] nilaiSPLAugmented(double[][] MatrixAugmented){
+        int n = MatrixAugmented.length;
+        int m = MatrixAugmented[0].length;
+        double[] nilai = new double[n];
+        for(int j=0;j<n;j++){
+            nilai[j] = MatrixAugmented[j][m-1];
+        }
+        return nilai;        
+    }
+
+    public static boolean cekDeterminan(double[][] Matrix){
+        // return true jika boolean != 0, false jika boolean 0;
+        double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
+        boolean kondisi = determinan == 0;
+        return kondisi;
+    }
+
+    public static void PrintSolusiSPL(double[] solusi){
+        int n = solusi.length;
+        System.out.println("Solusi persamaan tersebut adalah : ");
+        for(int i=0;i<n;i++){
+            System.out.println("x" + i + " : " + solusi[i]);
+        }
     }
 
     public static void MenuSPLGauss(){
         double[][] MatrixAugmented = InputSPLAugmented();
-        double[] solusi = new double[4];
-        PrintSolusiSPL(solusi);
+        double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
+        double[] nilai = nilaiSPLAugmented(MatrixAugmented);
+        boolean adaSolusi = cekDeterminan(Matrix);
+        if(adaSolusi){
+            double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
+            PrintSolusiSPL(solusi);
+        }else{
+            System.out.print("Tidak ada solusi.");
+        }
     }
     
     public static void MenuSPLGaussJordan(){
+        double[][] MatrixAugmented = InputSPLAugmented();
+        double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
+        double[] nilai = nilaiSPLAugmented(MatrixAugmented);
+        boolean adaSolusi = cekDeterminan(Matrix);
+        if(adaSolusi){
+            double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
+            PrintSolusiSPL(solusi);
+        }else{
+            System.out.print("Tidak ada solusi.");
+        }
         
     }
     
     public static void MenuSPLInverse(){
+        double[][] MatrixAugmented = InputSPLAugmented();
+        double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
+        double[] nilai = nilaiSPLAugmented(MatrixAugmented);
+        boolean adaSolusi = cekDeterminan(Matrix);
+        if(adaSolusi){
+            double[] solusi = OperasiSPL.SolusiSPLInverse(Matrix, nilai);
+            PrintSolusiSPL(solusi);
+        }else{
+            System.out.print("Tidak ada solusi.");
+        }
+    }
+    
+    public static void MenuSPLCrammer(){
+        double[][] MatrixAugmented = InputSPLAugmented();
+        double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
+        double[] nilai = nilaiSPLAugmented(MatrixAugmented);
+        boolean adaSolusi = cekDeterminan(Matrix);
+        if(adaSolusi){
+            double[] solusi = OperasiSPL.SolusiCrammer(Matrix, nilai);
+            PrintSolusiSPL(solusi);
+        }else{
+            System.out.print("Tidak ada solusi.");
+        }
+    }
+    
+    public static void MenuDeterminanCofactor(){
+        double[][] Matrix = InputMatrix();
+        if(Matrix.length != Matrix[0].length){
+            System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
+        }else{
+            double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
+            System.out.println("Determinan Matrix : " + determinan);
+        }
+    }
+
+    public static void MenuDeterminanOBE(){
+        double[][] Matrix = InputMatrix();
+        if(Matrix.length != Matrix[0].length){
+            System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
+        }else{
+            double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
+            System.out.println("Determinan Matrix : " + determinan);
+        }
+    }
+
+    public static void MenuInversAdjoin(){
+        double[][] Matrix = InputMatrix();
+        double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
+        if(determinan == 0 || Matrix.length != Matrix[0].length){
+            System.out.println("Matrix tidak memiliki Invers");
+        }else{
+            Matrix = OperasiInverse.inverseCofactor(Matrix);
+            System.out.println("Invers Matrix: ");
+            DisplayMatrix(Matrix);
+        }
+    }
+
+    public static void MenuInversOBE(){
+        double[][] Matrix = InputMatrix();
+        double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
+        if(determinan == 0 || Matrix.length != Matrix[0].length){
+            System.out.println("Matrix tidak memiliki Invers");
+        }else{
+            OperasiInverse.inverseIdentity(Matrix);
+            System.out.println("Invers Matrix: ");
+            DisplayMatrix(Matrix);
+        }
+    }
+
+    public static void MenuInterpolasiPolinom(){
         double[][] MatrixAugmented = InputSPLAugmented();
         int n = MatrixAugmented.length;
         int m = MatrixAugmented[0].length;
@@ -83,68 +203,15 @@ public class IOTerminal {
         for(int j=0;j<n;j++){
             nilai[j] = MatrixAugmented[j][m-1];
         }
-        // DebugMatrix.DisplayMatrix(Matrix);
-        double[] solusi = SPLInv.SolusiSPLInverse(Matrix, nilai);
-        DisplayArray(solusi);
-    }
-    
-    public static void MenuSPLCrammer(){
-        
-    }
-    
-    public static void MenuDeterminanCofactor(){ // selesai
-        double[][] Matrix = InputMatrix();
-        if(Matrix.length != Matrix[0].length){
-            System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
-        }else{
-            double determinan = Cofactor.determinant(Matrix, Matrix.length);
-            System.out.println("Determinan Matrix : " + determinan);
-        }
-    }
 
-    public static void MenuDeterminanOBE(){ // selesai
-        double[][] Matrix = InputMatrix();
-        if(Matrix.length != Matrix[0].length){
-            System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
-        }else{
-            double determinan = DetOBE.DeterminanOBE(Matrix);
-            System.out.println("Determinan Matrix : " + determinan);
-        }
-    }
-
-    public static void MenuInversAdjoin(){ // selesai
-        double[][] Matrix = InputMatrix();
-        double determinan = Cofactor.determinant(Matrix, Matrix.length);
-        if(determinan == 0 || Matrix.length != Matrix[0].length){
-            System.out.println("Matrix tidak memiliki Invers");
-        }else{
-            Matrix = Cofactor.inverse(Matrix);
-            System.out.println("Invers Matrix: ");
-            DisplayMatrix(Matrix);
-        }
-    }
-
-    public static void MenuInversOBE(){ // selesai
-        double[][] Matrix = InputMatrix();
-        Matrix = SPLInv.InverseOBE(Matrix);
-        double determinan = DetOBE.DeterminanOBE(Matrix);
-        if(determinan == 0 || Matrix.length != Matrix[0].length){
-            System.out.println("Matrix tidak memiliki Invers");
-        }else{
-            System.out.println("Invers Matrix: ");
-            DisplayMatrix(Matrix);
-        }
-    }
-
-    public static void MenuInterpolasiPolinom(){
-        System.out.print("Masukkan nilai n : ");
         Scanner scan = new Scanner(System.in);
-        double n = scan.nextDouble();
+        System.out.print("Masukkan nilai x yang ingin di taksir : ");
+        double x = scan.nextDouble();
         scan.close();
-
+        InterpolasiPolinom.estimate(Matrix, nilai, x);
     }
 
-    public static void MenuInterpolasiBicubic(){ // selesai
+    public static void MenuInterpolasiBicubic(){
         double[] nilai = new double[16];
         double a;
         Scanner scan = new Scanner(System.in);
@@ -161,16 +228,11 @@ public class IOTerminal {
         ay = scan.nextDouble();
         scan.close();
 
-        double interpolasi = BicubicInterpolation.InterpolasiBicubic(nilai, ax, ay);
+        double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
         System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
     }
 
     public static void MenuRegresiLinierBerganda(){
 
     }
-
-    public static void main(String args[]){
-
-    }
-
 }
