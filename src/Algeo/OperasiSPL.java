@@ -119,4 +119,12 @@ public class OperasiSPL {
         }
         return solusi;
     }
+    
+    public static double[] SolusiSPLInverse(double[][] matrix, double[][] nilai){
+        double[][] matrixinverse = new double[matrix.length][matrix[0].length];
+        OperasiPrimitif.copyMatrix(matrix, matrixinverse);
+        OperasiInverse.inverseIdentity(matrixinverse);
+        double[] solusi = OperasiPrimitif.SolusiSPL(matrixinverse, nilai);
+        return solusi;
+    }
 }
