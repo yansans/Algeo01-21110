@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,9 +52,10 @@ public class IOFiles {
         try {
             File myObj = new File(file);
             if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
+                System.out.println("File dibuat: " + myObj.getName());
             } else {
-                System.out.println("File already exists.");
+                System.out.println("File sudah ada.");
+                System.out.println("File akan di-overwrite ada.");
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -68,7 +69,7 @@ public class IOFiles {
                 }
             }
             Writer.close();
-            System.out.println("Successfully wrote to the file.");
+            System.out.println("File berhasil ditulis.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
