@@ -46,10 +46,6 @@ public class OperasiSPL {
         }
     }
 
-
-
-
-
     public static double[] SPLgauss(double[][] A, double[] b){
         int i, j;
         int m = A.length, n = A[0].length;
@@ -119,6 +115,14 @@ public class OperasiSPL {
             double determinanKecil = OperasiDeterminan.DeterminanOBE(matrixtmp);
             solusi[i] = determinanKecil/determinanUtama;
         }
+        return solusi;
+    }
+    
+    public static double[] SolusiSPLInverse(double[][] matrix, double[][] nilai){
+        double[][] matrixinverse = new double[matrix.length][matrix[0].length];
+        OperasiPrimitif.copyMatrix(matrix, matrixinverse);
+        OperasiInverse.inverseIdentity(matrixinverse);
+        double[] solusi = OperasiPrimitif.SolusiSPL(matrixinverse, nilai);
         return solusi;
     }
 }
