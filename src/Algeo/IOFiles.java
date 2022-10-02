@@ -40,7 +40,7 @@ public class IOFiles {
                     }
                 }
             }
-            scan_row.close();
+            scan.close();
         } catch (FileNotFoundException e) {
             System.out.println("File tidak ditemukan.");
             e.printStackTrace();
