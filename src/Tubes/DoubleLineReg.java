@@ -13,7 +13,7 @@ public class DoubleLineReg {
         xt = transpose(x);
         xxt = PerkalianMatrix(xt,x);
         invxxt = xxt;
-        inverse(invxxt,xxt.length);
+        Tubes.IdentityMatrix.inverse(invxxt);
         // b =  (XX^)^-1X^Y
         double[][] solve = PerkalianMatrix(PerkalianMatrix(invxxt, xt),y);
         return solve;
