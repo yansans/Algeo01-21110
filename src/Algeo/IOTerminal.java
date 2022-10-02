@@ -41,6 +41,26 @@ public class IOTerminal {
         return MatrixSPL;
     }
 
+    public static double[][] InputRegresiX(int n, int m , Scanner scan){
+        System.out.println("Berikan input regresi: ");
+        double[][] MatrixSPL = new double[m][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                MatrixSPL[i][j] = scan.nextDouble();
+            }
+        }
+        return MatrixSPL;
+    }
+
+    public static double[][] InputRegresiY(int m, Scanner scan){
+        double[][] MatrixSPL = new double[m][1];
+        for(int i=0;i<m;i++){
+                MatrixSPL[i][0] = scan.nextDouble();
+            }
+        return MatrixSPL;
+    }
+
+
     public static void DisplayArray(double[] array){
         for(int j=0;j<array.length;j++){
             System.out.print(array[j] + " ");
@@ -233,6 +253,23 @@ public class IOTerminal {
     }
 
     public static void MenuRegresiLinierBerganda(){
-
+        int n,m;
+        double[][] Matrix;
+        double[][] nilai;
+        double[][] var ;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Masukkan banyak peubah x (n) : ");
+        System.out.print("n : ");
+        n = scan.nextInt();
+        System.out.println("Masukkan banyak sampel (m) : ");
+        System.out.print("m : ");
+        m = scan.nextInt();
+        Matrix = InputRegresiX(n,m,scan);
+        System.out.println("Berikan input nilai Y : ");
+        nilai = InputRegresiY(m,scan);
+        System.out.println("Masukkan semua nilai x yang ingin di taksir : ");
+        var = InputRegresiY(n-1, scan);
+        scan.close();
+        DoubleLinearReg.estimateDoubReg(Matrix, nilai, var);
     }
 }

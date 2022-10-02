@@ -27,7 +27,6 @@ import static src.Algeo.IOFiles.*;
     x2 = 2 - 5 - a / 1
     x2 = 2/1 - 5/1 - a/1 = -3 + a
     x1 = (x[1][4] - x[1][3] - x[1][2] / x[1][1]
-
  */
 
 public class Menu {
@@ -67,37 +66,32 @@ public class Menu {
                 2. Input Files
                 Masukan nomor menu :
                 """);
+        scan.close();
         return scan.nextInt();
     }
     public static void filesIO(){
-        double[][] matrix = new double[0][0];
+        double[][] matrix = new double[1][1];
         boolean statusread, statuswrite;
         statusread = statuswrite = false;
         Scanner scan = new Scanner(System.in);
         System.out.println("Masukan nama dan/atau lokasi file");
         String file = scan.nextLine();
         try {
-            statusread = readMatrix(file, matrix);
+            matrix = readMatrix(file);
         }catch (FileNotFoundException e){
             System.out.println("File tidak ditemukan");
-        }if (statusread){
-            System.out.println("Masukan nama dan/atau lokasi penyimpanan file");
-            String save = scan.nextLine();
-            try {
-                statuswrite = writeMatrix(save, matrix);
-            } catch (IOException e) {
-                System.out.println("Terjadi error.");
-                System.out.println("File gagal disimpan.");
-            }
-            if (statuswrite){
-                System.out.println("File berhasil disimpan.");
-            }
         }
-        else {
-            System.out.println("File tidak ditemukan. Coba lagi.");
+        System.out.println("Masukan nama dan/atau lokasi penyimpanan file");
+        String save = scan.nextLine();
+        try {
+            writeMatrix(save, matrix);
+        } catch (IOException e) {
+            System.out.println("Terjadi error.");
+            System.out.println("File gagal disimpan.");
         }
-
+            System.out.println("File berhasil disimpan.");
     }
+
     public static void spl(int menu2){
         if (menu2 == 1){
 
@@ -151,7 +145,6 @@ public class Menu {
         Scanner input = new Scanner(System.in);
         menu1 = input.nextInt();
         while (true) {
-            System.out.println("loop");
             if (menu1 >= 1 && menu1 <= 3) {
                 subMenu();
                 menu2 = input.nextInt();
@@ -159,16 +152,14 @@ public class Menu {
                     System.out.println("Masukan menu yang valid.");
                     menu2 = input.nextInt();
                 }
-                System.out.println("menu 13");
             } else if (menu1 >= 4 && menu1 <= 6) {
-                System.out.println("menu 46");
             }
             if (menu1 < 1 || menu1 > 7) {
-                System.out.println("menu dll");
                 System.out.println("Masukan menu yang valid.");
 
             }
             if (menu1 == 7) {
+                input.close();
                 quit();
             }
             daftarMenu();
