@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 
 
 public class InterpolasiBicubic {
@@ -116,7 +116,7 @@ public class InterpolasiBicubic {
         return baris;
     }
 
-    public static double interpolasiBicubic(double[] nilai, double ax, double ay){
+    public static double[] solusiInterpolasiBicubic(double[] nilai){
         double[][] MatrixModel = new double[16][16];
         for(int y=0;y<4;y++){
             for(int x=0;x<4;x++){
@@ -124,7 +124,10 @@ public class InterpolasiBicubic {
             }
         }
         double[] solusi = OperasiSPL.SolusiCrammer(MatrixModel, nilai);
-        
+        return solusi;
+    }
+
+    public static double hasilInterpolasiBicubic(double[] solusi, double ax, double ay){
         double interpolasi = 0;
         double[] baris = BarisMatrixInterpolasiBicubicNormal(ax, ay);
         for(int i=0;i<16;i++){
@@ -133,7 +136,13 @@ public class InterpolasiBicubic {
         return interpolasi;
     }
 
-    public static double interpolasiBicubicSpline(double[] nilai, double ax, double ay){
+    public static double interpolasiBicubic(double[] nilai, double ax, double ay){
+        double[] solusi = solusiInterpolasiBicubic(nilai);
+        double interpolasi = hasilInterpolasiBicubic(solusi, ax, ay);
+        return interpolasi;
+    }
+
+    public static double[] solusiInterpolasiBicubicSpline(double[] nilai){
         double[][] MatrixModel = new double[16][16];
         for(int y=0;y<2;y++){ // baris normal
             for(int x=0;x<2;x++){
@@ -185,7 +194,10 @@ public class InterpolasiBicubic {
         OperasiInverse.inverseIdentity(MatrixModel); // X^-1
         double[][] RecycleMatrix = OperasiPrimitif.PerkalianMatrix(MatrixModel, MatrixDerivative); // X^-1 * D
         double[] solusi = OperasiPrimitif.SolusiSPL(RecycleMatrix, nilai);
-
+        return solusi;
+    }
+    
+    public static double hasilInterpolasiBicubicSpline(double[] solusi, double ax, double ay){
         double interpolasi = 0;
         double[] baris = BarisMatrixInterpolasiBicubicNormal(ax, ay);
         for(int i=0;i<16;i++){
@@ -194,7 +206,10 @@ public class InterpolasiBicubic {
         return interpolasi;
     }
 
-    public static void main(String[] args){
-
+    public static double interpolasiBicubicSpline(double[] nilai, double ax, double ay){
+        double[] solusi = solusiInterpolasiBicubicSpline(nilai);
+        double interpolasi = hasilInterpolasiBicubicSpline(solusi, ax, ay);
+        return interpolasi;
     }
+    
 }
