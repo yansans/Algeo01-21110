@@ -80,7 +80,7 @@ public class IOTerminal {
     public static boolean cekDeterminan(double[][] Matrix){
         // return true jika boolean != 0, false jika boolean 0;
         double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
-        boolean kondisi = determinan == 0;
+        boolean kondisi = determinan != 0;
         return kondisi;
     }
 
