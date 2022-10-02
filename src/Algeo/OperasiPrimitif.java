@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 
 public class OperasiPrimitif {
     public static void copyMatrix(double[][] matrix, double[][] copy){

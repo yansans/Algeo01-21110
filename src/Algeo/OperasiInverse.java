@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 
 public class OperasiInverse {
 

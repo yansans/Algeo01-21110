@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 
 public class OperasiSPL {
     public static double[] SPLgauss_jordan(double[][] A, double[] b){
@@ -45,8 +45,6 @@ public class OperasiSPL {
             return solution;
         }
     }
-
-
 
 
 
