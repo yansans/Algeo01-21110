@@ -25,9 +25,10 @@ public class IOFiles {
                 }
                 col = n;
             }
+            System.out.println(col);
+            System.out.println(row);
             scan_row.close();
             Scanner scan = new Scanner(matrix);
-
 
             mat = new double[row][col];
 
@@ -43,7 +44,7 @@ public class IOFiles {
 //            System.out.println("File tidak ditemukan.");
 //            e.printStackTrace();
 //        }
-        return mat;
+        return true;
     }
 
     public static boolean writeMatrix(String file, double[][] matriks) throws IOException{
@@ -53,13 +54,13 @@ public class IOFiles {
                 System.out.println("File dibuat: " + myObj.getName());
             } else {
                 System.out.println("File sudah ada.");
-                System.out.println("File akan di-overwrite ada.");
+                System.out.println("File akan di-overwrite.");
             }
 //        } catch (IOException e) {
 //            System.out.println("An error occurred.");
 //            e.printStackTrace();
 //        }
-        try {
+//        try {
             FileWriter Writer = new FileWriter(file);
             for (int i = 0 ; i < matriks.length ; i++){
                 for (int j = 0; j < matriks[0].length; j++){
@@ -67,27 +68,33 @@ public class IOFiles {
                 }
             }
             Writer.close();
-            System.out.println("File berhasil ditulis.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
         return true;
     }
 
-        public static void main(String[]args){
-        double[][] matrix = new double[0][0];
-        try {
-            matrix = readMatrix("fileread1.txt");
-        }catch (FileNotFoundException e){
-            System.out.println("File tidak ditemukan");
-        }
-        System.out.println("1");
-        printMatrix(matrix);
-        try {
-            writeMatrix("filewrite.txt", matrix);
-        }catch (IOException e){
-            System.out.println("Terjadi error.");
-        }
-    }
+//        public static void main(String[]args){
+//        double[][] matrix = new double[0][0];
+//        boolean status = false;
+//        Scanner scan = new Scanner(System.in);
+//        String a = scan.nextLine();
+//        try {
+//            status = readMatrix(a, matrix);
+//        }catch (FileNotFoundException e){
+//            System.out.println("File tidak ditemukan");
+//        }
+//        if (status) {
+////                printMatrix(matrix);
+//                try {
+//                    writeMatrix("bin/filewrite.txt", matrix);
+//                } catch (IOException e) {
+//                    System.out.println("Terjadi error.");
+//                }
+//            }
+//        else {
+//            System.out.println("File tidak ditemukan. Coba lagi.");
+//            }
+//    }
 }
