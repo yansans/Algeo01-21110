@@ -1,6 +1,7 @@
 ## Algeo01-21110
 ## TUGAS BESAR 1 IF2123 ALJABAR LINIER DAN GEOMETRI SISTEM PERSAMAAN LINIER DETERMINAN, DAN APLIKASINYA 
 ### SEMESTER 1 TAHUN 2022/2023
+<br>
 
 ### Kelompok 29 AverageAlgeoEnjoyers 
  Disusun Oleh : 
@@ -8,15 +9,18 @@
  - 13521112 Rayhan Hanif Maulana Pradana 
  - 13521173 Dewana Gustavus Haraka Otang
 <br>
-
-### Table of Contents
-1. [Cara Menjalankan Program](#Cara Menjalankan Program )
-2. [Cara Compile/Kompilasi](#Cara Compile/Kompilasi)
-3. [Main Menu](#Main Menu)
-4. [Contoh Penggunaan](#Contoh Penggunaan)
 <br>
 
-### Cara Menjalankan Program 
+
+### Table of Contents
+  1. [Cara Menjalankan Program](#cara-menjalankan-program)
+  2. [Cara Compile/Kompilasi](#cara-compilekompilasi)
+  3. [Main Menu](#main-menu)
+  4. [Contoh Penggunaan](#contoh-penggunaan)
+
+<br>
+
+### Cara Menjalankan Program
 ```sh
 git clone https://github.com/yansans/Algeo01-21110.git
 
@@ -31,8 +35,8 @@ java
 
 <br>
 
-### Cara Compile/Kompilasi <a name = "CC"></a>
-- Setelah clone
+### Cara Compile/Kompilasi
+Setelah clone
 ```sh
 cd Algeo01-21110
 
@@ -41,7 +45,7 @@ javac
 
 <br>
 
-### Main Menu <a name = "MM"></a>
+### Main Menu
 ```sh
 Menu
 1. Sistem Persamaan Linier
@@ -53,12 +57,12 @@ Menu
 7. Keluar
 Masukan nomor menu :
 ```
-- Pilih dengan cara mengetik angka ke terminal
+Pilih dengan cara mengetik angka ke terminal
 
 <br>
 
-### Contoh Penggunaan <a name = "CP"></a>
-- Menggunakan SPL 
+### Contoh Penggunaan 
+Menggunakan SPL 
 
 ```
 Contoh Kasus
