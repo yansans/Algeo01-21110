@@ -12,7 +12,7 @@ public class SolusiParametrik {
         // Create Matrix Augmented
         for(i = 0; i < A.length; i++){
             for(j = 0; j < A[0].length + 1; j++){
-                if(j == n){
+                if(j == A[0].length){
                     matrix[i][j] = b[i];
                 } else{
                     matrix[i][j] = A[i][j];
