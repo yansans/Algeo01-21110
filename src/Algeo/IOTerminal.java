@@ -80,7 +80,7 @@ public class IOTerminal {
         int m = MatrixAugmented[0].length;
         double[][] Matrix = new double[n][m-1];
         for(int i=0;i<n;i++){
-            for(int j=0;j<m-1;j++){
+            for(int j=0;j<n;j++){
                 Matrix[i][j] = MatrixAugmented[i][j];
             }
         }
@@ -99,7 +99,6 @@ public class IOTerminal {
 
     public static boolean cekDeterminan(double[][] Matrix){
         // return true jika boolean != 0, false jika boolean 0;
-        if(Matrix.length != Matrix[0].length)return true;
         double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
         return determinan != 0;
     }
@@ -107,15 +106,14 @@ public class IOTerminal {
     public static boolean adaSolusiSPL(double[][] Matrix, double[] nilai){
         boolean adaDeterminan = cekDeterminan(Matrix);
         boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
-        if(!adaDeterminan){
-            System.out.println("Determinan 0, Tidak ada solusi.");
-            return false;
-        }else if(solusiParametrik) {
+        if(solusiParametrik){
             SolusiParametrik.solusi(Matrix, nilai);
-            return false;
+        }else if(adaDeterminan){
+            return true;
+        }else{
+            System.out.println("Determinan 0, Tidak ada solusi.");
         }
-        return true;
-
+        return false;
     }
 
     public static void PrintSolusiSPL(double[] solusi){
