@@ -4,7 +4,6 @@ public class OperasiPrimitif {
     public static void copyMatrix(double[][] matrix, double[][] copy){
         int n = matrix.length;
         int m = matrix[0].length;
-        copy = new double[n][m];
         int i, j;
 
         for(i = 0; i < n; i++){
