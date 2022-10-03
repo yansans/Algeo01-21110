@@ -1,4 +1,4 @@
-package LinearAlgebraMatrixOperations;
+package src.Algeo;
 import java.lang.Math;
 
 public class InterpolasiPolinom {
