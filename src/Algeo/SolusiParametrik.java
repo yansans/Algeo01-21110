@@ -3,15 +3,27 @@ package src.Algeo;
 public class SolusiParametrik {
     public static void solusi(double[][] matrix){
         int i, j, k = 0, l, p, q;
-        int m = matrix.length, n = matrix[0].length - 1;
         int nonzero_count;
         int hex = 0x70;
         int UNDEF = -9999;
         double value;
         double[] solution = new double[n];
+        double[][] matrix = new double[A.length][A[0].length + 1];
         String[] parvariable = new String[n];
         String[] parsolution = new String[n];
 
+        // Create Matrix Augmented
+        for(i = 0; i < A.length; i++){
+            for(j = 0; j < A[0].length + 1; j++){
+                if(j == n){
+                    matrix[i][j] = b[i];
+                } else{
+                    matrix[i][j] = A[i][j];
+                }
+            }
+        }
+
+        int m = matrix.length, n = matrix[0].length - 1;
         // Set solutions to undefined
         for(i = 0; i < n-1; i++){
             solution[i] = UNDEF;
