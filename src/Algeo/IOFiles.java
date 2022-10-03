@@ -48,12 +48,11 @@ public class IOFiles {
         }
         double[][] Matrix = persamaanSPLAugmented(matrix);
         double[] nilai = nilaiSPLAugmented(matrix);
-        boolean adaSolusi = cekDeterminan(Matrix);
         System.out.println("Masukkan nama file yang akan disimpan : ");
         Scanner input  = new Scanner(System.in);
         String name = input.nextLine();
         try {
-            writeSPLCrammer(name, Matrix,nilai , adaSolusi);
+            writeSPLCrammer(name, Matrix,nilai);
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
@@ -69,12 +68,11 @@ public class IOFiles {
         }
         double[][] Matrix = persamaanSPLAugmented(matrix);
         double[] nilai = nilaiSPLAugmented(matrix);
-        boolean adaSolusi = cekDeterminan(Matrix);
         System.out.println("Masukkan nama file yang akan disimpan : ");
         Scanner input  = new Scanner(System.in);
         String name = input.nextLine();
         try {
-            writeSPLInverse(name, Matrix,nilai , adaSolusi);
+            writeSPLInverse(name, Matrix,nilai);
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
@@ -90,12 +88,11 @@ public class IOFiles {
         }
         double[][] Matrix = persamaanSPLAugmented(matrix);
         double[] nilai = nilaiSPLAugmented(matrix);
-        boolean adaSolusi = cekDeterminan(Matrix);
         System.out.println("Masukkan nama file yang akan disimpan : ");
         Scanner input  = new Scanner(System.in);
         String name = input.nextLine();
         try {
-            writeSPLGaussJordan(name, Matrix,nilai , adaSolusi);
+            writeSPLGaussJordan(name, Matrix,nilai);
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
@@ -116,15 +113,15 @@ public class IOFiles {
         Scanner input  = new Scanner(System.in);
         String name = input.nextLine();
         try {
-            writeSPLGauss(name, Matrix,nilai , adaSolusi);
+            writeSPLGauss(name, Matrix,nilai);
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
     }
 
 
-    public static void writeSPLGauss(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
-            throws IOException{
+    public static void writeSPLGauss(String file, double[][] Matrix, double[] nilai)
+            throws IOException {
         File myObj = new File(file);
         if (myObj.createNewFile()) {
             System.out.println("File dibuat: " + myObj.getName());
@@ -135,20 +132,20 @@ public class IOFiles {
         PrintStream o = new PrintStream(myObj);
         PrintStream console = System.out;
         System.setOut(o);
-        if(adaSolusi){
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+        if (adaSolusi) {
             double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
             try {
-                writeArray(file,solusi);
-            }catch (IOException e){
+                writeArray(file, solusi);
+            } catch (IOException e) {
                 System.out.println("Terjadi kesalahan.");
             }
-        }else{
-            System.out.print("Tidak ada solusi.");
+
+            System.setOut(console);
         }
-        System.setOut(console);
     }
 
-    public static void writeSPLGaussJordan(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
+    public static void writeSPLGaussJordan(String file, double[][] Matrix, double[] nilai)
             throws IOException{
         File myObj = new File(file);
         if (myObj.createNewFile()) {
@@ -160,6 +157,7 @@ public class IOFiles {
         PrintStream o = new PrintStream(myObj);
         PrintStream console = System.out;
         System.setOut(o);
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
         if(adaSolusi){
             double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
             try {
@@ -173,7 +171,7 @@ public class IOFiles {
         System.setOut(console);
 
     }
-    public static void writeSPLInverse(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
+    public static void writeSPLInverse(String file, double[][] Matrix, double[] nilai)
             throws IOException{
         File myObj = new File(file);
         if (myObj.createNewFile()) {
@@ -185,6 +183,7 @@ public class IOFiles {
         PrintStream o = new PrintStream(myObj);
         PrintStream console = System.out;
         System.setOut(o);
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
         if(adaSolusi){
             double[] solusi = OperasiSPL.SolusiSPLInverse(Matrix, nilai);
             try {
@@ -199,7 +198,7 @@ public class IOFiles {
 
     }
 
-    public static void writeSPLCrammer(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
+    public static void writeSPLCrammer(String file, double[][] Matrix, double[] nilai)
         throws IOException{
         File myObj = new File(file);
         if (myObj.createNewFile()) {
@@ -211,6 +210,7 @@ public class IOFiles {
         PrintStream o = new PrintStream(myObj);
         PrintStream console = System.out;
         System.setOut(o);
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
         if(adaSolusi){
             double[] solusi = OperasiSPL.SolusiCrammer(Matrix, nilai);
             try {
@@ -719,4 +719,5 @@ public class IOFiles {
 
         }
     }
+
 

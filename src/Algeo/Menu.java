@@ -82,14 +82,67 @@ public class Menu {
     }
 
     public static void spl(int menu2){
+        int i = iMenu();
         if (menu2 == 1){
-            return;
+            if (i == 1) {
+                int o = oMenu();
+                MenuSPLGauss(o);
+                return;
+            } else if (i == 2) {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                String file = input.nextLine();
+                filesSPLGauss(file);
+                return;
+            } else {
+                System.out.println("Input tidak dikenal.");
+                return;
+            }
         } else if (menu2 == 2) {
-            return;
+            if (i == 1) {
+                int o = oMenu();
+                MenuSPLGaussJordan(o);
+                return;
+            } else if (i == 2) {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                String file = input.nextLine();
+                filesSPLGaussJordan(file);
+                return;
+            } else {
+                System.out.println("Input tidak dikenal.");
+                return;
+            }
         } else if (menu2 == 3) {
-            return;
+            if (i == 1) {
+                int o = oMenu();
+                MenuSPLInverse(o);
+                return;
+            } else if (i == 2) {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                String file = input.nextLine();
+                filesSPLInverse(file);
+                return;
+            } else {
+                System.out.println("Input tidak dikenal.");
+                return;
+            }
         }else if (menu2 == 4) {
-            return;
+            if (i == 1) {
+                int o = oMenu();
+                MenuSPLCrammer(o);
+                return;
+            } else if (i == 2) {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                String file = input.nextLine();
+                filesSPLCrammer(file);
+                return;
+            } else {
+                System.out.println("Input tidak dikenal.");
+                return;
+            }
         }else{
             System.out.println("Input tidak dikenal.");
         }
@@ -171,15 +224,12 @@ public class Menu {
         if (menu1 == 1) {
             menu2 = subMenuSPL();
             spl(menu2);
-            System.out.println("Kembali ke menu utama");
         } else if (menu1 == 2) {
             menu2 = subMenuDet();
             determinan(menu2);
-            System.out.println("Kembali ke menu utama");
         } else if (menu1 == 3) {
             menu2 = subMenuInv();
             inverse(menu2);
-            System.out.println("Kembali ke menu utama");
         } else{
             System.out.println("Input tidak dikenal.");
         }

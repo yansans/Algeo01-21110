@@ -113,6 +113,7 @@ public class IOTerminal {
         }else{
             System.out.println("Determinan 0, Tidak ada solusi.");
         }
+        return false;
     }
 
     public static void PrintSolusiSPL(double[] solusi){
@@ -123,48 +124,93 @@ public class IOTerminal {
         }
     }
 
-    public static void MenuSPLGauss(){
+    public static void MenuSPLGauss(int o){
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
-        if(adaSolusi){
-            double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
-            PrintSolusiSPL(solusi);
+        if (o == 1){
+            boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+            if(adaSolusi){
+                double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
+                PrintSolusiSPL(solusi);
+        }else if(o == 2) {
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                Scanner input = new Scanner(System.in);
+                String name = input.nextLine();
+                try {
+                    writeSPLGauss(name, Matrix, nilai);
+                } catch (IOException e) {
+                    System.out.println("Terjadi kesalahan.");
+                }
+            }
         }
     }
     
-    public static void MenuSPLGaussJordan(){
+    public static void MenuSPLGaussJordan(int o) {
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
-        if(adaSolusi){
-            double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
-            PrintSolusiSPL(solusi);
+        if (o == 1) {
+            boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+            if (adaSolusi) {
+                double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
+                PrintSolusiSPL(solusi);
+            } else if (o == 2) {
+                System.out.println("Masukkan nama file yang akan disimpan : ");
+                Scanner input = new Scanner(System.in);
+                String name = input.nextLine();
+                try {
+                    writeSPLGaussJordan(name, Matrix, nilai);
+                } catch (IOException e) {
+                    System.out.println("Terjadi kesalahan.");
+                }
+            }
         }
     }
     
-    public static void MenuSPLInverse(){
+    public static void MenuSPLInverse(int o){
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
-        if(adaSolusi){
-            double[] solusi = OperasiSPL.SolusiSPLInverse(Matrix, nilai);
-            PrintSolusiSPL(solusi);
+        if (o == 1){
+            boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+            if(adaSolusi){
+                double[] solusi = OperasiSPL.SolusiSPLInverse(Matrix, nilai);
+                PrintSolusiSPL(solusi);
+        }
+        }else if(o == 2) {
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input = new Scanner(System.in);
+            String name = input.nextLine();
+            try {
+                writeSPLInverse(name, Matrix, nilai);
+            } catch (IOException e) {
+                System.out.println("Terjadi kesalahan.");
+            }
         }
     }
     
-    public static void MenuSPLCrammer(){
+    public static void MenuSPLCrammer(int o){
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
-        if(adaSolusi){
-            double[] solusi = OperasiSPL.SolusiCrammer(Matrix, nilai);
-            PrintSolusiSPL(solusi);
+        if(o == 1){
+            boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+            if(adaSolusi){
+                double[] solusi = OperasiSPL.SolusiCrammer(Matrix, nilai);
+                PrintSolusiSPL(solusi);
+            }
+        }else if(o == 2) {
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input = new Scanner(System.in);
+            String name = input.nextLine();
+            try {
+                writeSPLCrammer(name, Matrix, nilai);
+            } catch (IOException e) {
+                System.out.println("Terjadi kesalahan.");
+            }
         }
+
     }
     
     public static void MenuDeterminanCofactor(int i){
@@ -185,8 +231,6 @@ public class IOTerminal {
             }catch (IOException e){
                 System.out.println("Terjadi kesalahan.");
             }
-        }else{
-            System.out.println("Input tidak dikenal.");
         }
     }
 
@@ -207,9 +251,7 @@ public class IOTerminal {
             writeDeterminanOBE(name,Matrix);
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
-        }} else{
-        System.out.println("Input tidak dikenal.");
-        }
+        }}
     }
 
     public static void MenuInversAdjoin(int o){
@@ -231,9 +273,7 @@ public class IOTerminal {
                 writeInverseAdjoint(name,Matrix,determinan);
             }catch (IOException e){
                 System.out.println("Terjadi kesalahan.");
-            }} else{
-            System.out.println("Input tidak dikenal.");
-        }
+            }}
     }
 
     public static void MenuInversOBE(int o){
@@ -255,9 +295,7 @@ public class IOTerminal {
                 writeInverseOBE(name,Matrix,determinan);
             }catch (IOException e){
                 System.out.println("Terjadi kesalahan.");
-            }} else{
-            System.out.println("Input tidak dikenal.");
-        }
+            }}
     }
 
     public static void MenuInterpolasiPolinom(){
