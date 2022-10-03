@@ -706,18 +706,9 @@ public class IOFiles {
         System.setOut(console);
     }
 
-    public static void main(String[] Args) {
-        double[][] matrix = new double[1][1];
-//        try {
-//            matrix = readPolinom("fileread.txt");
-//        } catch (FileNotFoundException e) {
-//            System.out.println("file tidak ada");
-//        }
-//
-//        filesBicubic("fileread.txt");
 
 
-        }
-    }
+
+}
 
 
