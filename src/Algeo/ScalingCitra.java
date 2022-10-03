@@ -135,7 +135,7 @@ public class ScalingCitra{
                 double[] value = new double[16];
                 for(int k=0;k<4;k++){
                     for(int l=0;l<4;l++){
-                        if(inbound(hasil, i+2*k, j+2*l) && !processed[i+2*k][j+2*l]){
+                        if(inbound(hasil, i+2*k, j+2*l) && processed[i+2*k][j+2*l]){
                             last = hasil[i+2*k][j+2*l];
                         }
                         value[4*k + l] = last;
