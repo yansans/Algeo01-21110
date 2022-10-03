@@ -299,24 +299,29 @@ public class IOTerminal {
     }
 
     public static void MenuInterpolasiPolinom(){
-        double[][] MatrixAugmented = InputSPLAugmented();
-        int n = MatrixAugmented.length;
-        int m = MatrixAugmented[0].length;
-        double[][] Matrix = new double[n][m-1];
-        double[] nilai = new double[n];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                Matrix[i][j] = MatrixAugmented[i][j];
-            }
-        }
-        for(int j=0;j<n;j++){
-            nilai[j] = MatrixAugmented[j][m-1];
-        }
+        int i, j;
+        Scanner sc = new Scanner(System.in);
+        double x, y;
+        int point;
 
-        Scanner scan = new Scanner(System.in);
+        System.out.print("Masukkan jumlah titik : ");
+        point = sc.nextInt();
+
+        double[][] Matrix = new double[point][point];
+        double[] nilai = new double[point];
+
+        for(i = 0; i < point; i++){
+            System.out.print("Masukkan titik x" + i + " y" + i + " : ");
+            x = sc.nextDouble();
+            y = sc.nextDouble();
+            for(j = 0; j < point; j++){
+                Matrix[i][j] = Math.pow(x, j);
+            }
+            nilai[i] = y;
+        }
         System.out.print("Masukkan nilai x yang ingin di taksir : ");
-        double x = scan.nextDouble();
-        InterpolasiPolinom.estimate(Matrix, nilai, x);
+        double xtaksir = sc.nextDouble();
+        InterpolasiPolinom.estimate(Matrix, nilai, xtaksir);
     }
 
     public static void MenuInterpolasiBicubic(){
