@@ -50,27 +50,4 @@ public class InterpolasiPolinom {
         System.out.print("f(" + x + ") = ");
         System.out.printf("%.4f\n", y);
     }
-    
-    public static double[][] inputInterpolasi(){
-        int i, j;
-        Scanner sc = new Scanner(System.in);
-        double x, y;
-        int point;
-
-        System.out.print("Masukkan jumlah titik: ");
-        point = sc.nextInt();
-
-        double[][] matrix = new double[point][point+1];
-
-        for(i = 0; i < point; i++){
-            System.out.print("Masukkan titik x" + i + " y" + i + ": ");
-            x = sc.nextDouble();
-            y = sc.nextDouble();
-            for(j = 0; j < point; j++){
-                matrix[i][j] = Math.pow(x, j);
-            }
-            matrix[i][point] = y;
-        }
-        return matrix;
-    }
 }
