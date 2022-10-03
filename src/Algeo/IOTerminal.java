@@ -21,7 +21,6 @@ public class IOTerminal {
                 MatrixOut[i][j] = scan.nextDouble();
             }
         }
-        scan.close();
         return MatrixOut;
     }
     
@@ -40,7 +39,6 @@ public class IOTerminal {
                 MatrixSPL[i][j] = scan.nextDouble();
             }
         }
-        scan.close();
         return MatrixSPL;
     }
 
@@ -279,7 +277,6 @@ public class IOTerminal {
         Scanner scan = new Scanner(System.in);
         System.out.print("Masukkan nilai x yang ingin di taksir : ");
         double x = scan.nextDouble();
-        scan.close();
         InterpolasiPolinom.estimate(Matrix, nilai, x);
     }
 
@@ -298,7 +295,6 @@ public class IOTerminal {
         double ax, ay;
         ax = scan.nextDouble();
         ay = scan.nextDouble();
-        scan.close();
 
         double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
         System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
@@ -321,7 +317,6 @@ public class IOTerminal {
         nilai = InputRegresiY(m,scan);
         System.out.println("Masukkan semua nilai x yang ingin di taksir : ");
         var = InputRegresiY(n-1, scan);
-        scan.close();
         DoubleLinearReg.estimateDoubReg(Matrix, nilai, var);
     }
 }
