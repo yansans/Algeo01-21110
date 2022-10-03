@@ -100,8 +100,19 @@ public class IOTerminal {
     public static boolean cekDeterminan(double[][] Matrix){
         // return true jika boolean != 0, false jika boolean 0;
         double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
-        boolean kondisi = determinan != 0;
-        return kondisi;
+        return determinan != 0;
+    }
+
+    public static boolean adaSolusiSPL(double[][] Matrix, double[] nilai){
+        boolean adaDeterminan = cekDeterminan(Matrix);
+        boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
+        if(solusiParametrik){
+            SolusiParametrik.solusi(Matrix, nilai);
+        }else if(adaDeterminan){
+            return true;
+        }else{
+            System.out.println("Determinan 0, Tidak ada solusi.");
+        }
     }
 
     public static void PrintSolusiSPL(double[] solusi){
@@ -116,13 +127,8 @@ public class IOTerminal {
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean tidakAdaDeterminan = cekDeterminan(Matrix);
-        boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
-        if(solusiParametrik){
-            SolusiParametrik.solusi(Matrix);
-        }else if(tidakAdaDeterminan){
-            System.out.print("Determinan 0, Tidak ada solusi.");
-        }else{
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+        if(adaSolusi){
             double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
             PrintSolusiSPL(solusi);
         }
@@ -132,13 +138,8 @@ public class IOTerminal {
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean tidakAdaDeterminan = cekDeterminan(Matrix);
-        boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
-        if(solusiParametrik){
-            SolusiParametrik.solusi(Matrix);
-        }else if(tidakAdaDeterminan){
-            System.out.print("Determinan 0, Tidak ada solusi.");
-        }else{
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+        if(adaSolusi){
             double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
             PrintSolusiSPL(solusi);
         }
@@ -148,13 +149,8 @@ public class IOTerminal {
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean tidakAdaDeterminan = cekDeterminan(Matrix);
-        boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
-        if(solusiParametrik){
-            SolusiParametrik.solusi(Matrix);
-        }else if(tidakAdaDeterminan){
-            System.out.print("Determinan 0, Tidak ada solusi.");
-        }else{
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+        if(adaSolusi){
             double[] solusi = OperasiSPL.SolusiSPLInverse(Matrix, nilai);
             PrintSolusiSPL(solusi);
         }
@@ -164,13 +160,8 @@ public class IOTerminal {
         double[][] MatrixAugmented = InputSPLAugmented();
         double[][] Matrix = persamaanSPLAugmented(MatrixAugmented);
         double[] nilai = nilaiSPLAugmented(MatrixAugmented);
-        boolean tidakAdaDeterminan = cekDeterminan(Matrix);
-        boolean solusiParametrik = SolusiParametrik.isParametrik(Matrix);
-        if(solusiParametrik){
-            SolusiParametrik.solusi(Matrix);
-        }else if(tidakAdaDeterminan){
-            System.out.print("Determinan 0, Tidak ada solusi.");
-        }else{
+        boolean adaSolusi = adaSolusiSPL(Matrix, nilai);
+        if(adaSolusi){
             double[] solusi = OperasiSPL.SolusiCrammer(Matrix, nilai);
             PrintSolusiSPL(solusi);
         }

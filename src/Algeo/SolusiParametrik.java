@@ -1,3 +1,5 @@
+package src.Algeo;
+
 public class SolusiParametrik {
     public static void solusi(double[][] matrix){
         int i, j, k = 0, l, p, q;
