@@ -49,17 +49,21 @@ javac -d bin src/Algeo/*.java
 ### Cara Membuat Jar File Menggunakan Intellij Idea
 1. Memilih menu File dan sub menu Project Structure
 
+
 ![Memilih menu File dan sub menu Project Structure](https://cdn.discordapp.com/attachments/864378289695359017/1026452507465093160/unknown.png)
+
 2. Pada Project Settings pilih Menu Artifacts kemudian Jar From modules with dependencies
 
-
 ![Pada Project Settings pilih Menu Artifacts kemudian Jar From modules with dependencies](https://cdn.discordapp.com/attachments/864378289695359017/1026452648158838784/unknown.png)
+
 3. Pilih Main class dan klik ok
 
 ![Pilih Main class dan klik ok](https://cdn.discordapp.com/attachments/864378289695359017/1026452754450894859/unknown.png)
+
 4. Pilih menu Build kemudian Build Artifact
    
 ![Pilih menu Build kemudian Build Artifact](https://cdn.discordapp.com/attachments/864378289695359017/1026452850827591680/unknown.png)
+
 5. Klik build pada Artifact yang sebelumnya
    
 ![Klik build pada Artifact yang sebelumnya](https://cdn.discordapp.com/attachments/864378289695359017/1026452917756108800/unknown.png)
