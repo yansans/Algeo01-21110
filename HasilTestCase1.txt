@@ -1,0 +1,8 @@
+d.
+Untuk semua metode penyelesaian SPL (Eliminasi Gauss, Eliminasi Gauss-Jordan, Matriks Balikan, dan Kaidah Cramer) :
+x0 : 0.5
+x1 : 0.25
+x2 : 0.17
+x3 : 0.125
+x4 : 0.1
+x5 : 1.0
