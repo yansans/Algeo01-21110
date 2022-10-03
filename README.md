@@ -66,7 +66,8 @@ Menu
 4. Interpolasi Polinom
 5. Interpolasi Bicubic
 6. Regresi linier berganda
-7. Keluar
+7. Perbesaran Citra
+8. Keluar
 Masukan nomor menu :
 >>
 ```
@@ -98,17 +99,17 @@ Menu
 1. Metode OBE
 2. Metode Kofaktor
 Masukan nomor menu :
-1
+>> 1
 Menu
 1. Input Terminal
 2. Input Files
 Masukan nomor menu :
-1
+>> 1
 Menu
 1. Output Terminal
 2. Output Files
 Masukan nomor menu :
-1
+>> 1
 Masukkan dimensi matrix n,m :
 n : 2
 m : 2
