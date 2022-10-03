@@ -1,5 +1,5 @@
 public class SolusiParametrik {
-    public static String[] solusi(double[][] matrix){
+    public static void solusi(double[][] matrix){
         int i, j, k = 0, l, p, q;
         int m = matrix.length, n = matrix[0].length - 1;
         int nonzero_count;
@@ -118,6 +118,27 @@ public class SolusiParametrik {
             parsolution[n-1] = parvariable[n-1];
         }
 
-        return parsolution;
+        // Output Parametric Solution
+        for(i = 0; i < n; i++){
+            System.out.println("x" + (i+1) + " = " + parsolution[i]);
+       }
+    }
+    
+    public static boolean isParametrik(double [][]matrix){
+        int i, j, zero_row = 0;
+        int m = matrix.length, n = matrix[0].length;
+        OperasiPrimitif.gauss_jordan(matrix);
+
+        for(j = 0; j < n; j++){
+            zero_row = j;
+            if(matrix[m-1][j] != 0){
+                break;
+            }
+        }
+        if((zero_row == n-1 && matrix[m-1][n-1] == 0) | (n - 1 > m)){    // Solusi parametrik
+            return true;
+        } else{
+            return false;
+        }
     }
 }
