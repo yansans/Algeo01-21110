@@ -157,7 +157,7 @@ public class ScalingCitra{
         return hasil;
     }
 
-    public static void main(String args[]){
+    public static void scalingCitra(){
         String input, output;
         Scanner scan = new Scanner(System.in);
         System.out.print("Masukkan path image yang ingin diperbesar : ");
@@ -165,13 +165,12 @@ public class ScalingCitra{
         System.out.print("Masukkan path dimana image akan disimpan : ");
         output = scan.nextLine();
 
-        scan.close();
         int[][] convertedImage = takeImage(input);
         double[][] doublematrix = IntToDoubleMat(convertedImage);
         double[][] hasilproses = prosesBicubic(doublematrix);
         int[][] outputmatrix = DoubleToIntMat(hasilproses);
         saveImage(output, outputmatrix);
-        
+
         System.out.println("\nScaling selesai.");
     }
 }
