@@ -223,13 +223,19 @@ public class Menu {
         int menu2;
         if (menu1 == 1) {
             menu2 = subMenuSPL();
-            spl(menu2);
+            if (menu2 > 0 && menu2 < 5){
+                spl(menu2);
+            }else return;
         } else if (menu1 == 2) {
             menu2 = subMenuDet();
-            determinan(menu2);
+            if (menu2 > 0 && menu2 < 3) {
+                determinan(menu2);
+            }else return;
         } else if (menu1 == 3) {
             menu2 = subMenuInv();
-            inverse(menu2);
+            if (menu2 > 0 && menu2 < 3) {
+                inverse(menu2);
+            }else return;
         } else{
             System.out.println("Input tidak dikenal.");
         }
@@ -314,6 +320,7 @@ public class Menu {
                 System.out.println("Kembali ke menu utama.");
             } else if (menu1 >= 4 && menu1 <= 7) {
                 aplikasiMatriks(menu1);
+                System.out.println("Kembali ke menu utama.");
             }
             if (menu1 < 1 || menu1 > 8) {
                 System.out.println("Masukan menu yang valid.");
