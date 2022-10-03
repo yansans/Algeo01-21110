@@ -13,3 +13,9 @@ b.
    f(8.323) = 36331.7227     (10/08/2022)
    f(9.167) = -667646.2188   (05/09/2022), yang artinya jumlah kasus COVID-19 adalah 0.
    f(10.0) = -216931708.9375 (30/09/2022), yang artinya jumlah kasus COVID-19 adalah 0.
+   
+   
+c.
+   Misal, n = 5
+   f(x) = 0.2358x^5 -1.4188x^4 + 3.2329x^3 -3.5499x^2 + 2.0347x + 0.0000,
+   f(0.5) = 0.4527 (contoh taksiran)
