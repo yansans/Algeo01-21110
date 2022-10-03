@@ -6,3 +6,8 @@ x3 = q
 x4 = p
 
 b.
+Untuk semua metode penyelesaian SPL (Eliminasi Gauss, Eliminasi Gauss-Jordan, Matriks Balikan, dan Kaidah Cramer) :
+x1 = 
+x2 = 
+x3 = - -1.0q 
+x4 = p
