@@ -1,7 +1,7 @@
 package src.Algeo;
 
 public class SolusiParametrik {
-    public static void solusi(double[][] matrix){
+    public static void solusi(double[][] A, double[] b){
         int i, j, k = 0, l, p, q;
         int nonzero_count;
         int hex = 0x70;
