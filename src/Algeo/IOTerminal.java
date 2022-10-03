@@ -1,5 +1,8 @@
 package src.Algeo;
+import java.io.IOException;
 import java.util.*;
+
+import static src.Algeo.IOFiles.*;
 
 
 public class IOTerminal {
@@ -165,29 +168,55 @@ public class IOTerminal {
         }
     }
     
-    public static void MenuDeterminanCofactor(){
+    public static void MenuDeterminanCofactor(int i){
         double[][] Matrix = InputMatrix();
-        if(Matrix.length != Matrix[0].length){
-            System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
+        if (i == 1){
+            if(Matrix.length != Matrix[0].length){
+                System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
+            }else{
+                double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
+                System.out.println("Determinan Matrix : " + determinan);
+            }
+        }else if(i == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try{
+            writeDeterminanCofactor(name,Matrix);
+            }catch (IOException e){
+                System.out.println("Terjadi kesalahan.");
+            }
         }else{
-            double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
-            System.out.println("Determinan Matrix : " + determinan);
+            System.out.println("Input tidak dikenal.");
         }
     }
 
-    public static void MenuDeterminanOBE(){
+    public static void MenuDeterminanOBE(int o){
         double[][] Matrix = InputMatrix();
+        if (o == 1){
         if(Matrix.length != Matrix[0].length){
             System.out.print("Matrix bukan matrix segitiga, tidak memiliki determinan");
         }else{
             double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
             System.out.println("Determinan Matrix : " + determinan);
         }
+        }else if(o == 2){
+        System.out.println("Masukkan nama file yang akan disimpan : ");
+        Scanner input  = new Scanner(System.in);
+        String name = input.nextLine();
+        try{
+            writeDeterminanOBE(name,Matrix);
+        }catch (IOException e){
+            System.out.println("Terjadi kesalahan.");
+        }} else{
+        System.out.println("Input tidak dikenal.");
+        }
     }
 
-    public static void MenuInversAdjoin(){
+    public static void MenuInversAdjoin(int o){
         double[][] Matrix = InputMatrix();
         double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
+        if (o == 1){
         if(determinan == 0 || Matrix.length != Matrix[0].length){
             System.out.println("Matrix tidak memiliki Invers");
         }else{
@@ -195,17 +224,40 @@ public class IOTerminal {
             System.out.println("Invers Matrix: ");
             DisplayMatrix(Matrix);
         }
+        }else if(o == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try{
+                writeInverseAdjoint(name,Matrix,determinan);
+            }catch (IOException e){
+                System.out.println("Terjadi kesalahan.");
+            }} else{
+            System.out.println("Input tidak dikenal.");
+        }
     }
 
-    public static void MenuInversOBE(){
+    public static void MenuInversOBE(int o){
         double[][] Matrix = InputMatrix();
         double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
-        if(determinan == 0 || Matrix.length != Matrix[0].length){
-            System.out.println("Matrix tidak memiliki Invers");
-        }else{
-            OperasiInverse.inverseIdentity(Matrix);
-            System.out.println("Invers Matrix: ");
-            DisplayMatrix(Matrix);
+        if (o == 1) {
+            if (determinan == 0 || Matrix.length != Matrix[0].length) {
+                System.out.println("Matrix tidak memiliki Invers");
+            } else {
+                OperasiInverse.inverseIdentity(Matrix);
+                System.out.println("Invers Matrix: ");
+                DisplayMatrix(Matrix);
+            }
+        }else if(o == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try{
+                writeInverseOBE(name,Matrix,determinan);
+            }catch (IOException e){
+                System.out.println("Terjadi kesalahan.");
+            }} else{
+            System.out.println("Input tidak dikenal.");
         }
     }
 
