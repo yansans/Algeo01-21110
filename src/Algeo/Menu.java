@@ -6,29 +6,6 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 import static src.Algeo.IOFiles.*;
 
-
-/*
-    1 1 2 | 3
-    0 1 1 | 2
-    0 0 0 | 0
-
-    y[]
-    x[]
-    bagi[]
-    loop search baris 0 = [baris3] = batas
-    hasil[] = new int[n]
-    loop i travesal [batas-1 ... 0]
-        loop i travesal [batas-1 ... 0]
-           y[j] -= x[j][i]
-           if i == j
-                bagi[i] = x[i][j]
-    x3 = a
-    x2 = (x[2][4] - x[2][1] - x[2][3]) / x[2][2]
-    x2 = 2 - 5 - a / 1
-    x2 = 2/1 - 5/1 - a/1 = -3 + a
-    x1 = (x[1][4] - x[1][3] - x[1][2] / x[1][1]
- */
-
 public class Menu {
 
     public static void daftarMenu(){
@@ -68,28 +45,6 @@ public class Menu {
                 """);
         scan.close();
         return scan.nextInt();
-    }
-    public static void filesIO(){
-        double[][] matrix = new double[1][1];
-        boolean statusread, statuswrite;
-        statusread = statuswrite = false;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Masukan nama dan/atau lokasi file");
-        String file = scan.nextLine();
-        try {
-            matrix = readMatrix(file);
-        }catch (FileNotFoundException e){
-            System.out.println("File tidak ditemukan");
-        }
-        System.out.println("Masukan nama dan/atau lokasi penyimpanan file");
-        String save = scan.nextLine();
-        try {
-            writeMatrix(save, matrix);
-        } catch (IOException e) {
-            System.out.println("Terjadi error.");
-            System.out.println("File gagal disimpan.");
-        }
-            System.out.println("File berhasil disimpan.");
     }
 
     public static void spl(int menu2){
