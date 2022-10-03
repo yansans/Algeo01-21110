@@ -1,0 +1,10 @@
+Nilai f(0.000000,0.000000) hasil interpolasi adalah : 161.000000
+
+Nilai f(0.500000,0.500000) hasil interpolasi adalah : 97.726562
+
+Nilai f(0.250000,0.750000) hasil interpolasi adalah : 105.514771
+
+Nilai f(0.100000,0.900000) hasil interpolasi adalah : 104.229118
+
+
+

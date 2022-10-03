@@ -134,7 +134,7 @@ public class IOTerminal {
                 double[] solusi = OperasiSPL.SPLgauss(Matrix, nilai);
                 PrintSolusiSPL(solusi);
         }else if(o == 2) {
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 Scanner input = new Scanner(System.in);
                 String name = input.nextLine();
                 try {
@@ -156,7 +156,7 @@ public class IOTerminal {
                 double[] solusi = OperasiSPL.SPLgauss_jordan(Matrix, nilai);
                 PrintSolusiSPL(solusi);
             } else if (o == 2) {
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 Scanner input = new Scanner(System.in);
                 String name = input.nextLine();
                 try {
@@ -179,7 +179,7 @@ public class IOTerminal {
                 PrintSolusiSPL(solusi);
         }
         }else if(o == 2) {
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             Scanner input = new Scanner(System.in);
             String name = input.nextLine();
             try {
@@ -201,7 +201,7 @@ public class IOTerminal {
                 PrintSolusiSPL(solusi);
             }
         }else if(o == 2) {
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             Scanner input = new Scanner(System.in);
             String name = input.nextLine();
             try {
@@ -223,7 +223,7 @@ public class IOTerminal {
                 System.out.println("Determinan Matrix : " + determinan);
             }
         }else if(i == 2){
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             Scanner input  = new Scanner(System.in);
             String name = input.nextLine();
             try{
@@ -244,7 +244,7 @@ public class IOTerminal {
             System.out.println("Determinan Matrix : " + determinan);
         }
         }else if(o == 2){
-        System.out.println("Masukkan nama file yang akan disimpan : ");
+        System.out.println("Masukkan nama file yang akan di-read : ");
         Scanner input  = new Scanner(System.in);
         String name = input.nextLine();
         try{
@@ -266,7 +266,7 @@ public class IOTerminal {
             DisplayMatrix(Matrix);
         }
         }else if(o == 2){
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             Scanner input  = new Scanner(System.in);
             String name = input.nextLine();
             try{
@@ -288,7 +288,7 @@ public class IOTerminal {
                 DisplayMatrix(Matrix);
             }
         }else if(o == 2){
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             Scanner input  = new Scanner(System.in);
             String name = input.nextLine();
             try{
