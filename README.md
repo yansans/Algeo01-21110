@@ -24,11 +24,11 @@
 ```sh
 git clone https://github.com/yansans/Algeo01-21110.git
 
-cd Algeo01-21110
+cd Algeo01-21110-main
 
 cd bin
 
-java 
+java Algeo.Main
 ```
 
 <br>
@@ -38,9 +38,9 @@ java
 ### Cara Compile/Kompilasi
 Setelah clone
 ```sh
-cd Algeo01-21110
+cd Algeo01-21110-main
 
-javac 
+javac -d bin src/Algeo/*.java
 ```
 
 <br>
