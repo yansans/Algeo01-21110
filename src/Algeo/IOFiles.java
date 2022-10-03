@@ -372,7 +372,33 @@ public class IOFiles {
         }
     }
 
-
+    public static void filesBicubic(String file){
+        double[][] matrix = new double[1][1];
+        double[][] var = new double[1][1];
+        try{
+            matrix = readBicubic(file);
+            var = readBicubicValue(file);
+        }catch (FileNotFoundException e){
+            System.out.println("File tidak ditemukan.");
+            return;
+        }
+        double[] nilai = new double[16];
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                nilai[i*4+j] = matrix[i][j];
+            }
+        }
+        double ax = var[0][0];
+        double ay = var[1][0];
+        System.out.println("Masukkan nama file yang akan disimpan : ");
+        Scanner input  = new Scanner(System.in);
+        String name = input.nextLine();
+        try{
+            writeBicubic(name, nilai, ax,ay);
+        }catch (IOException e){
+            System.out.println("Terjadi kesalahan.");
+        }
+    }
     public static double[][] readBicubic(String file) throws FileNotFoundException {
         int row, col;
         row = col = 4;
@@ -680,7 +706,7 @@ public class IOFiles {
 //            System.out.println("file tidak ada");
 //        }
 
-        filesSPLCrammer("fileread.txt");
+        filesBicubic("fileread.txt");
 
 
         }
