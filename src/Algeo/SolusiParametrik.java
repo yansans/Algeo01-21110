@@ -100,9 +100,9 @@ public class SolusiParametrik {
                 }
             }
             // Completion
-            if(solution[i] != UNDEF && solution[i] != 0){
+            if(i < n && solution[i] != UNDEF && solution[i] != 0){
                 parsolution[i] = solution[i] + " ";
-            } else if(solution[i] != UNDEF && solution[i] == 0){
+            } else if(i < n && solution[i] != UNDEF && solution[i] == 0){
                 parsolution[i] = "";
             }
             for(j = k; j < n; j++){
