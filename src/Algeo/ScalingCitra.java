@@ -12,7 +12,7 @@ public class ScalingCitra{
         try {
             img = ImageIO.read(new File(inputImageAbsPath));
         } catch(Exception e) {
-            e.printStackTrace();
+            System.out.println("Terjadi kesalahan.");
         }
 
         // Get the image width and height dimensions
@@ -59,7 +59,8 @@ public class ScalingCitra{
             System.out.println("... Saving image to " + output);
             ImageIO.write(image, "jpg", new File(output));
         } catch(Exception e) {
-            e.printStackTrace();
+            System.out.println("Terjadi kesalahan.");
+            return;
         }
         System.out.println("... Image saved.");
     }
