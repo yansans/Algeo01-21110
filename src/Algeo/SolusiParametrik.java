@@ -1,5 +1,5 @@
 public class SolusiParametrik {
-    public static String[] solusi(double[][] matrix){
+    public static void solusi(double[][] matrix){
         int i, j, k = 0, l, p, q;
         int m = matrix.length, n = matrix[0].length - 1;
         int nonzero_count;
@@ -118,6 +118,9 @@ public class SolusiParametrik {
             parsolution[n-1] = parvariable[n-1];
         }
 
-        return parsolution;
+        // Output Parametric Solution
+        for(i = 0; i < n; i++){
+            System.out.println("x" + (i+1) + " = " + parsolution[i]);
+       }
     }
 }
