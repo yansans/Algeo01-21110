@@ -123,4 +123,22 @@ public class SolusiParametrik {
             System.out.println("x" + (i+1) + " = " + parsolution[i]);
        }
     }
+    
+    public static boolean isParametrik(double [][]matrix){
+        int i, j, zero_row = 0;
+        int m = matrix.length, n = matrix[0].length;
+        OperasiPrimitif.gauss_jordan(matrix);
+
+        for(j = 0; j < n; j++){
+            zero_row = j;
+            if(matrix[m-1][j] != 0){
+                break;
+            }
+        }
+        if((zero_row == n-1 && matrix[m-1][n-1] == 0) | (n - 1 > m)){    // Solusi parametrik
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
