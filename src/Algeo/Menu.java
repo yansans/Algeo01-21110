@@ -90,7 +90,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesSPLGauss(file);
                 return;
@@ -105,7 +105,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesSPLGaussJordan(file);
                 return;
@@ -120,7 +120,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesSPLInverse(file);
                 return;
@@ -135,7 +135,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesSPLCrammer(file);
                 return;
@@ -156,7 +156,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesDeterminanOBE(file);
                 return;
@@ -171,7 +171,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesDeterminanCofactor(file);
                 return;
@@ -192,7 +192,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesInverseOBE(file);
                 return;
@@ -207,7 +207,7 @@ public class Menu {
                 return;
             } else if (i == 2) {
                 Scanner input = new Scanner(System.in);
-                System.out.println("Masukkan nama file yang akan disimpan : ");
+                System.out.println("Masukkan nama file yang akan di-read : ");
                 String file = input.nextLine();
                 filesInverseAdjoint(file);
                 return;
@@ -245,11 +245,11 @@ public class Menu {
         int i = iMenu();
         if (i == 1){
             int o = oMenu();
-            MenuInterpolasiPolinom();
+            MenuInterpolasiPolinom(o);
             return;
         }else if(i == 2){
             Scanner input = new Scanner(System.in);
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             String file = input.nextLine();
             inputFilesPolinom(file);
             return;
@@ -262,11 +262,11 @@ public class Menu {
         int i = iMenu();
         if (i == 1){
             int o = oMenu();
-            MenuInterpolasiBicubic();
+            MenuInterpolasiBicubic(o);
             return;
         }else if(i == 2){
             Scanner input = new Scanner(System.in);
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             String file = input.nextLine();
             filesBicubic(file);
             return;
@@ -279,11 +279,11 @@ public class Menu {
         int i = iMenu();
         if (i == 1){
             int o = oMenu();
-            MenuRegresiLinierBerganda();
+            MenuRegresiLinierBerganda(o);
             return;
         }else if(i == 2){
             Scanner input = new Scanner(System.in);
-            System.out.println("Masukkan nama file yang akan disimpan : ");
+            System.out.println("Masukkan nama file yang akan di-read : ");
             String file = input.nextLine();
             inputFilesDoubleReg(file);
             return;

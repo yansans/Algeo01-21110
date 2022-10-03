@@ -298,7 +298,7 @@ public class IOTerminal {
             }}
     }
 
-    public static void MenuInterpolasiPolinom(){
+    public static void MenuInterpolasiPolinom(int o){
         int i, j;
         Scanner sc = new Scanner(System.in);
         double x, y;
@@ -321,10 +321,21 @@ public class IOTerminal {
         }
         System.out.print("Masukkan nilai x yang ingin di taksir : ");
         double xtaksir = sc.nextDouble();
-        InterpolasiPolinom.estimate(Matrix, nilai, xtaksir);
+        if (o == 1){
+            InterpolasiPolinom.estimate(Matrix, nilai, xtaksir);
+        }else if (o == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try{
+                writePolinom(name,Matrix, nilai, xtaksir);
+            }catch (IOException e){
+                System.out.print("Terjadi kesalahan.");
+            }
+        }
     }
 
-    public static void MenuInterpolasiBicubic(){
+    public static void MenuInterpolasiBicubic(int o){
         double[] nilai = new double[16];
         double a;
         Scanner scan = new Scanner(System.in);
@@ -339,12 +350,23 @@ public class IOTerminal {
         double ax, ay;
         ax = scan.nextDouble();
         ay = scan.nextDouble();
+        if (o == 1){
+            double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
+            System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
+        }else if(o == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try{
+                writeBicubic(name, nilai, ax,ay);
+            }catch (IOException e){
+                System.out.println("Terjadi kesalahan.");
+            }
+        }
 
-        double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
-        System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
     }
 
-    public static void MenuRegresiLinierBerganda(){
+    public static void MenuRegresiLinierBerganda(int o){
         int n,m;
         double[][] Matrix;
         double[][] nilai;
@@ -361,6 +383,17 @@ public class IOTerminal {
         nilai = InputRegresiY(m,scan);
         System.out.println("Masukkan semua nilai x yang ingin di taksir : ");
         var = InputRegresiY(n-1, scan);
-        DoubleLinearReg.estimateDoubReg(Matrix, nilai, var);
+        if (o == 1){
+            DoubleLinearReg.estimateDoubReg(Matrix, nilai, var);
+        }else if( o == 2){
+            System.out.println("Masukkan nama file yang akan disimpan : ");
+            Scanner input  = new Scanner(System.in);
+            String name = input.nextLine();
+            try {
+                writeDoubleReg(name, Matrix, nilai, var);
+            } catch (IOException e) {
+                System.out.println("file tidak ada");
+            }
+        }
     }
 }
