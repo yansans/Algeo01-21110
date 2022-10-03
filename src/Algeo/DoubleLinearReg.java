@@ -55,6 +55,6 @@ public class DoubleLinearReg {
         for (int i = 1 ; i < m ; i++){
             est += solution[i][0] * a[i-1][0];
         }
-        System.out.printf("%.4f",est);
+        System.out.printf("%.4f\n",est);
     }
 }
