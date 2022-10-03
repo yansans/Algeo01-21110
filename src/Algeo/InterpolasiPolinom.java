@@ -26,7 +26,7 @@ public class InterpolasiPolinom {
                 System.out.printf("%.4f", solution[i]);
                 System.out.print("x^" + i);
             } else{
-                System.out.print(" - ");
+                System.out.print(" ");
                 System.out.printf("%.4f", solution[i]);
                 System.out.print("x^" + i);
             }
@@ -36,7 +36,7 @@ public class InterpolasiPolinom {
             System.out.printf("%.4f", solution[1]);
             System.out.print("x");
         } else{
-            System.out.print(" - ");
+            System.out.print(" ");
             System.out.printf("%.4f", solution[1]);
             System.out.print("x");
         }
@@ -44,7 +44,7 @@ public class InterpolasiPolinom {
             System.out.print(" + ");
             System.out.printf("%.4f,\n", solution[0]);
         } else{
-            System.out.print(" - ");
+            System.out.print(" ");
             System.out.printf("%.4f,\n", solution[0]);
         }
         System.out.print("f(" + x + ") = ");
