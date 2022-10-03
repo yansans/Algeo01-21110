@@ -1,88 +1,123 @@
 public class SolusiParametrik {
-    public static String[] output(double[][] matrix){
-        int i, j, k = 0, l;
-        int m = matrix.length, n = matrix[0].length;
+    public static String[] solusi(double[][] matrix){
+        int i, j, k = 0, l, p, q;
+        int m = matrix.length, n = matrix[0].length - 1;
+        int nonzero_count;
+        int hex = 0x70;
+        int UNDEF = -9999;
         double value;
-        int hex = 0x61;
-        int index = n-2;
-        double[] solution = new double[n-1];
-        String[] suppose = new String[n-1];
-        String[] parsolution = new String[n-1];
+        double[] solution = new double[n];
+        String[] parvariable = new String[n];
+        String[] parsolution = new String[n];
+
         // Set solutions to undefined
         for(i = 0; i < n-1; i++){
-            solution[i] = -9999;
-            suppose[i] = "UNDEF";
-            parsolution[i] = "UNDEF";
+            solution[i] = UNDEF;
         }
 
-        // Gauss Jordan
+        // Gauss-Jordan Elimination
         OperasiPrimitif.gauss_jordan(matrix);
 
+        // Parametrik
+        p = n-1;
         for(i = m-1; i >= 0; i--){
+            nonzero_count = 0;
+            // Count the number of nonzero elements in a row (without the last column)
             for(j = 0; j < n; j++){
+                if(matrix[i][j] != 0){
+                    nonzero_count++;
+                    k = j; // The col index of the last nonzero element
+                }
+            }
+            // If only one element, then the solution is in the last column
+            if(nonzero_count == 1){
+                solution[k] = matrix[i][n];
+                // Look for the parametric solution (that is, the column of the zero element after the only nonzero)
+                for(l = k; l < n; l++){
+                    if(matrix[i][l] == 0 && solution[l] == UNDEF){
+                        parvariable[l] = Character.toString((char)hex);
+                        hex++;
+                    }
+                }
+            }
+            // OR if there are no nonzero elemets in the row, the parametric solution is clear
+            else if(nonzero_count == 0){
+                parvariable[p] = Character.toString((char)hex);
+                hex++;
+                p--;
+            }
+        }
+        // The solution with more than one element in a row
+        for(i = m-1; i >= 0; i--){
+            nonzero_count = 0;
+            // Count the nonzero elements in a row
+            for(j = n-1; j >= 0; j--){
+                if(matrix[i][j] != 0){
+                    nonzero_count++;
+                    k = j; // Index of the first nonzero element
+                }
+            }
+            // If more than one element, then subtract the rightmost column of the row (it is the solution)
+            if(nonzero_count > 1){
+                solution[k] = matrix[i][n];
+                for(l = k+1; l < n; l++){
+                    // If the solution of the current index not parametric
+                    if(parvariable[l] == null && solution[l] != UNDEF){
+                        solution[k] -= matrix[i][l] * solution[l];
+                    }
+                }
+            }
+        }
+        // Check if there are any parametric solutions left
+        for(i = 0; i < n; i++){
+            if(solution[i] == UNDEF && parvariable[i] == null && matrix[i][i] == 0){
+                parvariable[i] = Character.toString((char)hex);
+                hex++;
+            }
+        }
+
+        // Complete the parametric solution
+        for(i = 0; i < m; i++){
+            // Check the first index of nonzero element in a row
+            for(j = 0; j < n; j++){
+                k = j;
                 if(matrix[i][j] != 0){
                     break;
                 }
-                if(j == n-1 && matrix[i][n-1] == 0){
-                    suppose[k] = Character.toString((char)hex);
-                    k++;
-                    hex++;
-                    index--;
-                }
             }
-        }
-        j = 0;
-        for(i = 0; i < m-k; i++){
-            solution[j] = matrix[j][n-1];
-            j++;
-        }
-
-        i = 0;
-        while(solution[i] != -9999){
-            if(solution[i] != 0){
+            // Completion
+            if(solution[i] != UNDEF && solution[i] != 0){
                 parsolution[i] = solution[i] + " ";
-            } else{
+            } else if(solution[i] != UNDEF && solution[i] == 0){
                 parsolution[i] = "";
             }
-            j = 0;
-            l = index + 1;
-            while(j != k){
-                if(matrix[i][l] < 0){
-                    parsolution[i] += "+" + Double.toString(-matrix[i][l]) + suppose[j] + " ";
-                    l++;
-                    j++;
-                } else{
-                    parsolution[i] += Double.toString(-matrix[i][l]) + suppose[j] + " ";
-                    l++;
-                    j++;
+            for(j = k; j < n; j++){
+                if(matrix[i][j] > 0 && parvariable[j] != null && solution[i] != 0){
+                    parsolution[i] += "- " + Double.toString(matrix[i][j]) +  parvariable[j] + " ";
+                } else if(matrix[i][j] < 0 && parvariable[j] != null && solution[i] != 0){
+                    parsolution[i] += "+ " + Double.toString(-matrix[i][j]) +  parvariable[j] + " ";
+                } else if(matrix[i][j] > 0 && parvariable[j] != null && solution[i] == 0){
+                    parsolution[i] += "- " + Double.toString(-matrix[i][j]) +  parvariable[j] + " ";
+                } else if(matrix[i][j] < 0 && parvariable[j] != null && solution[i] == 0){
+                    parsolution[i] += Double.toString(-matrix[i][j]) +  parvariable[j] + " ";
                 }
             }
-            k--;
-            i++;     
         }
-        i = 0;
-        while(parsolution[i] != "UNDEF"){
-            i++;
+        
+        // Complete the remaining solutions
+        for(i = 0; i < n-1; i++){
+            if(parsolution[i] == null && parvariable[i] != null){
+                parsolution[i] = parvariable[i];
+            } else if(parsolution[i] == null && solution[i] != UNDEF){
+                parsolution[i] = solution[i] + "";
+            }
         }
-        j = 0;
-        while(suppose[j] != "UNDEF"){
-            parsolution[i] = suppose[j];
-            i++;
-            j++;
+        if(parvariable[n-1] == null){
+            parsolution[n-1] = solution[n-1] + "";
+        } else{
+            parsolution[n-1] = parvariable[n-1];
         }
 
         return parsolution;
-    }
-
-    public static void main(String[] args){
-        int i;
-        double[][] matrix = {{0, 0, -2, 0,7, 12},
-                            {2, 4, -10, 6, 12, 28},
-                            {2, 4, -5, 6, -5, -1}};
-        String[] solution = output(matrix);
-
-        for(i = 0; i < matrix[0].length - 1; i++){
-            System.out.println(solution[i]);
-        }
     }
 }
