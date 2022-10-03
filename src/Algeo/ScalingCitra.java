@@ -111,6 +111,24 @@ public class ScalingCitra{
             }
         }
         
+        // interpolasi sisi
+        for(int i=1;i<2*n;i+=2){
+            hasil[i][0] = hasil[i-1][0];
+            processed[i][0] = true;
+        }
+        for(int j=1;j<2*m;j+=2){
+            hasil[0][j] = hasil[0][j-1];
+            processed[0][j] = true;
+        }
+        for(int i=1;i<2*n;i++){
+            hasil[i][1] = (hasil[i-1][1] + hasil[i][0])/2;
+            processed[i][1] = true;
+        }
+        for(int j=1;j<2*m;j++){
+            hasil[1][j] = (hasil[0][j] + hasil[1][j-1])/2;
+            processed[1][j] = true;
+        }
+        
         for(int i=0;i<2*n;i+=2){ // iterate all idx
             for(int j=0;j<2*m;j+=2){
                 double last = hasil[i][j];
