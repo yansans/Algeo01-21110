@@ -408,6 +408,21 @@ public class IOFiles {
         return mat;
     }
 
+    public static void writeBicubic(String file, double[] nilai, double ax, double ay)throws IOException{
+        File myObj = new File(file);
+        if (myObj.createNewFile()) {
+            System.out.println("File dibuat: " + myObj.getName());
+        } else {
+            System.out.println("File sudah ada.");
+            System.out.println("File akan di-overwrite.");
+        }
+        PrintStream o = new PrintStream(myObj);
+        PrintStream console = System.out;
+        System.setOut(o);
+        double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
+        System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
+    }
+
     public static double[][] readPolinom(String file) throws FileNotFoundException {
         int row, col;
         row = col = 0;
@@ -502,8 +517,6 @@ public class IOFiles {
         for (int i = 0; i < n; i++) {
                 nilai[i][0] = aug[i][m-1];
         }
-        printMatrix(Matrix);
-        printMatrix(nilai);
         System.out.println("Masukkan semua nilai x yang ingin di taksir : ");
         var = InputRegresiY(m-2, scan);
         System.out.println("Masukkan nama file yang akan disimpan : ");
@@ -669,7 +682,6 @@ public class IOFiles {
 
         filesSPLCrammer("fileread.txt");
 
-        printMatrix(matrix);
 
         }
     }
