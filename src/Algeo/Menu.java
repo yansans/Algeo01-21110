@@ -315,7 +315,7 @@ public class Menu {
             } else if (menu1 >= 4 && menu1 <= 7) {
                 aplikasiMatriks(menu1);
             }
-            if (menu1 < 1 || menu1 > 7) {
+            if (menu1 < 1 || menu1 > 8) {
                 System.out.println("Masukan menu yang valid.");
             }
             if (menu1 == 8) {
