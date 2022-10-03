@@ -2,10 +2,13 @@ package Algeo;
 
 public class OperasiPrimitif {
     public static void copyMatrix(double[][] matrix, double[][] copy){
+        int n = matrix.length;
+        int m = matrix[0].length;
+        copy = new double[n][m];
         int i, j;
 
-        for(i = 0; i < matrix.length; i++){
-            for(j = 0; j < matrix[0].length; j++){
+        for(i = 0; i < n; i++){
+            for(j = 0; j < m; j++){
                 copy[i][j] = matrix[i][j];
             }
         }
