@@ -23,7 +23,6 @@ public class IOFiles {
             }
             col = n;
         }
-        scan_row.close();
         Scanner scan = new Scanner(matrix);
         double[][] mat;
         mat = new double[row][col];
@@ -35,7 +34,6 @@ public class IOFiles {
                 }
             }
         }
-        scan.close();
         return mat;
     }
 
@@ -147,6 +145,7 @@ public class IOFiles {
         }else{
             System.out.print("Tidak ada solusi.");
         }
+        System.setOut(console);
     }
 
     public static void writeSPLGaussJordan(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
@@ -171,6 +170,8 @@ public class IOFiles {
         }else{
             System.out.print("Tidak ada solusi.");
         }
+        System.setOut(console);
+
     }
     public static void writeSPLInverse(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
             throws IOException{
@@ -194,6 +195,8 @@ public class IOFiles {
         }else{
             System.out.print("Tidak ada solusi.");
         }
+        System.setOut(console);
+
     }
 
     public static void writeSPLCrammer(String file, double[][] Matrix, double[] nilai, boolean adaSolusi)
@@ -218,6 +221,8 @@ public class IOFiles {
         }else{
             System.out.print("Tidak ada solusi.");
         }
+        System.setOut(console);
+
     }
 
     public static void filesDeterminanOBE(String file)  {
@@ -236,7 +241,7 @@ public class IOFiles {
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
-        input.close();
+
     }
 
     public static void filesDeterminanCofactor(String file)  {
@@ -255,7 +260,6 @@ public class IOFiles {
         }catch (IOException e){
             System.out.println("Terjadi kesalahan.");
         }
-        input.close();
     }
 
     public static void writeDeterminanCofactor(String file, double[][]Matrix ) throws IOException{
@@ -275,6 +279,8 @@ public class IOFiles {
             double determinan = OperasiDeterminan.DeterminanCofactor(Matrix, Matrix.length);
             System.out.println("Determinan Matrix : " + determinan);
         }
+        System.setOut(console);
+
     }
 
     public static void writeDeterminanOBE(String file, double[][]Matrix ) throws IOException{
@@ -294,6 +300,7 @@ public class IOFiles {
             double determinan = OperasiDeterminan.DeterminanOBE(Matrix);
             System.out.println("Determinan Matrix : " + determinan);
         }
+        System.setOut(console);
     }
 
     public static void filesInverseOBE(String file) {
@@ -350,6 +357,7 @@ public class IOFiles {
             OperasiInverse.inverseIdentity(Matrix);
             writeMatrix(file,Matrix);
         }
+        System.setOut(console);
     }
 
     public static void writeInverseAdjoint(String file, double[][] Matrix, double determinan)
@@ -370,6 +378,8 @@ public class IOFiles {
             Matrix = OperasiInverse.inverseCofactor(Matrix);
             writeMatrix(file,Matrix);
         }
+        System.setOut(console);
+
     }
 
     public static void filesBicubic(String file){
@@ -414,7 +424,6 @@ public class IOFiles {
                 }
             }
         }
-        scan.close();
         return mat;
     }
     public static double[][] readBicubicValue(String file) throws FileNotFoundException {
@@ -447,6 +456,8 @@ public class IOFiles {
         System.setOut(o);
         double interpolasi = InterpolasiBicubic.interpolasiBicubic(nilai, ax, ay);
         System.out.printf("Nilai f(%f,%f) hasil interpolasi adalah : %f\n", ax, ay, interpolasi);
+        System.setOut(console);
+
     }
 
     public static double[][] readPolinom(String file) throws FileNotFoundException {
@@ -465,7 +476,6 @@ public class IOFiles {
         }
         System.out.println(row);
         System.out.println(col);
-        scan_row.close();
         Scanner scan = new Scanner(matrix);
         double[][] mat;
         mat = new double[row][col];
@@ -477,7 +487,6 @@ public class IOFiles {
                 }
             }
         }
-        scan.close();
         return mat;
     }
 
@@ -495,7 +504,6 @@ public class IOFiles {
         for (int i = 0; i < array.length; i++) {
                 Writer.write(array[i] + ((i != array.length - 1) ? " " : "\n"));
         }
-        Writer.close();
         return true;
     }
     public static boolean writeMatrix(String file, double[][] matriks) throws IOException {
@@ -514,7 +522,6 @@ public class IOFiles {
                 Writer.write(matriks[i][j] + ((j != matriks[0].length - 1) ? " " : "\n"));
             }
         }
-        Writer.close();
         return true;
     }
 
@@ -553,8 +560,7 @@ public class IOFiles {
         } catch (IOException e) {
             System.out.println("file tidak ada");
         }
-        scan.close();
-        input.close();
+
     }
 
     public static void writeDoubleReg(String file, double[][] x, double[][] y, double[][] a)
@@ -597,6 +603,8 @@ public class IOFiles {
             est += solution[i][0] * a[i - 1][0];
         }
         System.out.printf("%.4f", est);
+        System.setOut(console);
+
     }
 
 
@@ -633,8 +641,7 @@ public class IOFiles {
         }catch (IOException e){
             System.out.print("Terjadi kesalahan.");
         }
-        scan.close();
-        input.close();
+
 
     }
     public static void writePolinom(String file, double[][] A, double[] b, double x)
@@ -696,6 +703,7 @@ public class IOFiles {
         }
         System.out.print("f(" + x + ") = ");
         System.out.printf("%.4f\n", y);
+        System.setOut(console);
     }
 
     public static void main(String[] Args) {
@@ -705,8 +713,8 @@ public class IOFiles {
 //        } catch (FileNotFoundException e) {
 //            System.out.println("file tidak ada");
 //        }
-
-        filesBicubic("fileread.txt");
+//
+//        filesBicubic("fileread.txt");
 
 
         }
