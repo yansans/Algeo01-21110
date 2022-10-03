@@ -1,16 +1,23 @@
 a.
 Untuk semua metode penyelesaian SPL (Eliminasi Gauss, Eliminasi Gauss-Jordan, Matriks Balikan, dan Kaidah Cramer) :
-x0 : 2.0
-x1 : -1.0
-x2 : -4.0
-x3 : 1.0
+x0 = 2.0
+x1 = -1.0
+x2 = -4.0
+x3 = 1.0
 
+b.
+Error out of bounds 
+Tidak menangani kasus jumlah variabel yang jauh lebih banyak daripada baris matriks
+
+c.
+Error out of bounds
+Tidak menangani kasus jumlah variabel yang jauh lebih banyak daripada baris matriks 
 
 d.
 Untuk semua metode penyelesaian SPL (Eliminasi Gauss, Eliminasi Gauss-Jordan, Matriks Balikan, dan Kaidah Cramer) :
-x0 : 0.5
-x1 : 0.25
-x2 : 0.17
-x3 : 0.125
-x4 : 0.1
-x5 : 1.0
+x0 = 0.5
+x1 = 0.25
+x2 = 0.17
+x3 = 0.125
+x4 = 0.1
+x5 = 1.0
