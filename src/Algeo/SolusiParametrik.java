@@ -7,10 +7,7 @@ public class SolusiParametrik {
         int hex = 0x70;
         int UNDEF = -9999;
         double value;
-        double[] solution = new double[n];
         double[][] matrix = new double[A.length][A[0].length + 1];
-        String[] parvariable = new String[n];
-        String[] parsolution = new String[n];
 
         // Create Matrix Augmented
         for(i = 0; i < A.length; i++){
@@ -24,6 +21,9 @@ public class SolusiParametrik {
         }
 
         int m = matrix.length, n = matrix[0].length - 1;
+        double[] solution = new double[n];
+        String[] parvariable = new String[n];
+        String[] parsolution = new String[n];
         // Set solutions to undefined
         for(i = 0; i < n-1; i++){
             solution[i] = UNDEF;
