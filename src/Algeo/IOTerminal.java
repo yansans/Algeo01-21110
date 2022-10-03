@@ -80,7 +80,7 @@ public class IOTerminal {
         int m = MatrixAugmented[0].length;
         double[][] Matrix = new double[n][m-1];
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
+            for(int j=0;j<m-1;j++){
                 Matrix[i][j] = MatrixAugmented[i][j];
             }
         }
