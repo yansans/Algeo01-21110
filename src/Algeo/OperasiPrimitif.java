@@ -200,9 +200,11 @@ public class OperasiPrimitif {
                     zero_row++;
                 }
             }
-            ratio = matrix[i][zero_row];
-        for(j = 0; j < n; j++){
-            matrix[i][j] /= ratio;
+            if(zero_row != n){
+                ratio = matrix[i][zero_row];      
+                for(j = 0; j < n; j++){
+                    matrix[i][j] /= ratio;
+            }
         }
     }
     
@@ -328,10 +330,12 @@ public class OperasiPrimitif {
                     zero_row++;
                 }
             }
-            ratio = matrix[i][zero_row];
-        for(j = 0; j < m; j++){
-            matrix[i][j] /= ratio;
-            identity[i][j] /= ratio;
+        if(zero_row != m){
+            ratio = matrix[i][zero_row];      
+            for(j = 0; j < m; j++){
+                matrix[i][j] /= ratio;
+                identity[i][j] /= ratio;
+            }
         }
     }
 }
