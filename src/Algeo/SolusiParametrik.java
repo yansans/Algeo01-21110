@@ -1,4 +1,4 @@
-package src.Algeo;
+package Algeo;
 
 public class SolusiParametrik {
     public static void solusi(double[][] A, double[] b){

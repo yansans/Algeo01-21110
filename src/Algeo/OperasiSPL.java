@@ -1,4 +1,4 @@
-package src.Algeo;
+package Algeo;
 
 public class OperasiSPL {
     public static double[] SPLgauss_jordan(double[][] A, double[] b){

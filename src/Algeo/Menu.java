@@ -1,12 +1,12 @@
-package src.Algeo;
+package Algeo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import static java.lang.System.exit;
-import static src.Algeo.IOFiles.*;
-import static src.Algeo.IOTerminal.*;
-import static src.Algeo.ScalingCitra.*;
+import static Algeo.IOFiles.*;
+import static Algeo.IOTerminal.*;
+import static Algeo.ScalingCitra.*;
 
 public class Menu {
 

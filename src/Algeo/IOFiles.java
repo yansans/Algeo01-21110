@@ -1,10 +1,10 @@
-package src.Algeo;
+package Algeo;
 
 import java.io.*;
 import java.util.Scanner;
 
-import static src.Algeo.DoubleLinearReg.doubRegSolveIdent;
-import static src.Algeo.IOTerminal.*;
+import static Algeo.DoubleLinearReg.doubRegSolveIdent;
+import static Algeo.IOTerminal.*;
 
 public class IOFiles {
     public static double[][] readMatrix(String file) throws FileNotFoundException {

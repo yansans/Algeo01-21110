@@ -1,8 +1,8 @@
-package src.Algeo;
+package Algeo;
 import java.io.IOException;
 import java.util.*;
 
-import static src.Algeo.IOFiles.*;
+import static Algeo.IOFiles.*;
 
 
 public class IOTerminal {

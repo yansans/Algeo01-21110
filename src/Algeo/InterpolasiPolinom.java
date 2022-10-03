@@ -1,4 +1,4 @@
-package src.Algeo;
+package Algeo;
 import java.lang.Math;
 
 public class InterpolasiPolinom {

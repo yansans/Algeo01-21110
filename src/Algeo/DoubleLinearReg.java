@@ -1,4 +1,4 @@
-package src.Algeo;
+package Algeo;
 
 public class DoubleLinearReg {
 

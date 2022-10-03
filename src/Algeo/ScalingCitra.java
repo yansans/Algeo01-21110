@@ -1,4 +1,4 @@
-package src.Algeo;
+package Algeo;
 import java.io.File;
 import java.util.Scanner;
 import java.awt.image.BufferedImage;
